@@ -1,2 +1,17 @@
+# ISPhOA 2026 — International Seminar on Photonics, Optics, and its Applications
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /verify-email
+Disallow: /user/
+Disallow: /teams/
+Disallow: /two-factor-challenge
+
+Sitemap: https://isphoa2026.org/sitemap.xml
+Host: https://isphoa2026.org

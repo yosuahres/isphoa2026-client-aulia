@@ -25,6 +25,34 @@ Route::name('site.')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
+| Crawler endpoints
+|--------------------------------------------------------------------------
+|
+| robots.txt is a real file in public/ so the web server answers it without
+| booting PHP. The sitemap is a route because its <loc> values have to be
+| built from the named routes rather than hand-maintained.
+|
+*/
+
+Route::get('/sitemap.xml', function () {
+    $lastmod = now()->toAtomString();
+
+    $urls = array_map(fn (array $page) => [
+        'loc' => App\Support\Seo::absoluteUrl(
+            (string) parse_url(route($page['route'], absolute: false), PHP_URL_PATH)
+        ),
+        'lastmod' => $lastmod,
+        'changefreq' => $page['changefreq'],
+        'priority' => $page['priority'],
+    ], App\Support\Seo::indexableRoutes());
+
+    return response()
+        ->view('sitemap', ['urls' => $urls])
+        ->header('Content-Type', 'application/xml');
+})->name('sitemap');
+
+/*
+|--------------------------------------------------------------------------
 | Authenticated area
 |--------------------------------------------------------------------------
 |

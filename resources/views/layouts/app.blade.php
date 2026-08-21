@@ -13,6 +13,10 @@
 
         <x-favicon />
 
+        {{-- Authenticated area: keep it out of search results entirely. robots.txt
+             blocks the crawl, this blocks indexing of any URL that leaks out. --}}
+        <meta name="robots" content="noindex, nofollow">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />

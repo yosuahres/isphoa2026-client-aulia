@@ -9,6 +9,10 @@
 <x-layouts.site>
     <div class="surface-light flex-1 bg-mist">
         <x-site.container class="py-8 md:py-10">
+            {{-- The design gives this page no visible header, but every page still
+                 needs exactly one h1 for crawlers and screen readers. --}}
+            <h1 class="sr-only">Call for Papers</h1>
+
             <section>
                 <x-site.label>Topics of Interest</x-site.label>
                 <x-site.body>

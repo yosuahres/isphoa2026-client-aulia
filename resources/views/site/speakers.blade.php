@@ -6,6 +6,10 @@
 <x-layouts.site :scroll-to-hash="true">
     <div class="surface-light bg-mist">
         <x-site.container class="py-16 md:py-20">
+            {{-- The design gives this page no visible header, but every page still
+                 needs exactly one h1 for crawlers and screen readers. --}}
+            <h1 class="sr-only">Speakers</h1>
+
             @foreach (config('isphoa.speakerGroups') as $groupIndex => $group)
                 <section @class(['mt-24 md:mt-28' => $groupIndex > 0])>
                     <h2 class="font-display text-[clamp(1.6rem,4vw,2.5rem)] font-semibold uppercase tracking-[-0.02em] text-navy">

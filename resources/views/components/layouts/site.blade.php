@@ -5,9 +5,16 @@
 ])
 
 @php
+    use App\Support\Seo;
+
     $event = config('isphoa.event');
-    $siteName = $event['shortName'] . ' ' . $event['edition'];
-    $defaultDescription = $event['fullName'] . ' — ' . $event['theme'] . '. ' . $event['venue'] . ', ' . $event['dates'] . '.';
+    $siteName = Seo::siteName();
+    $defaultDescription = Seo::description();
+
+    // Canonical must name the production origin, not whatever host served the
+    // request, or staging and localhost would advertise themselves as the
+    // canonical copy. Seo::siteUrl() resolves that.
+    $canonical = Seo::absoluteUrl(request()->getPathInfo());
 @endphp
 
 <!DOCTYPE html>
@@ -21,15 +28,28 @@
              other page fills the template, matching the Next.js metadata. --}}
         <title>@hasSection('title')@yield('title') · {{ $siteName }}@else{{ $siteName }} · {{ $event['fullName'] }}@endif</title>
         <meta name="description" content="@yield('description', $defaultDescription)">
-        <link rel="canonical" href="{{ url()->current() }}">
+        <link rel="canonical" href="{{ $canonical }}">
+
+        <meta name="keywords" content="{{ implode(', ', Seo::keywords()) }}">
+        <meta name="author" content="{{ $siteName }} Organizing Committee">
+        <meta name="publisher" content="{{ $siteName }}">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="{{ $siteName }}">
-        <meta property="og:title" content="@yield('title', $siteName)">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:title" content="@hasSection('title'){{ Seo::socialTitle(trim($__env->yieldContent('title'))) }}@else{{ Seo::socialTitle() }}@endif">
         <meta property="og:description" content="@yield('description', $defaultDescription)">
-        <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:image" content="{{ asset('brand/logo-main.png') }}">
+        <meta property="og:url" content="{{ $canonical }}">
+        <meta property="og:image" content="{{ Seo::absoluteUrl('/og-image.png') }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="{{ $siteName }} · {{ $event['fullName'] }}">
+
         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="@hasSection('title'){{ Seo::socialTitle(trim($__env->yieldContent('title'))) }}@else{{ Seo::socialTitle() }}@endif">
+        <meta name="twitter:description" content="@yield('description', $defaultDescription)">
+        <meta name="twitter:image" content="{{ Seo::absoluteUrl('/og-image.png') }}">
 
         <x-favicon />
 
