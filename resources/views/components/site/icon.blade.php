@@ -35,5 +35,9 @@
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ $strokeWidth }}"
      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
      {{ $attributes->merge(['class' => 'size-4']) }}>
+    {{-- Unescaped by necessity: this is SVG path markup, not text. It is safe
+         because the value can only ever be one of the literals in $paths
+         above -- $name is a lookup key, never output, and an unknown key
+         yields an empty string rather than reaching the page. --}}
     {!! $paths[$name] ?? '' !!}
 </svg>

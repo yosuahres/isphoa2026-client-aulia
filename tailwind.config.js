@@ -14,6 +14,9 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        // The nav controller toggles classes from JS, so this file is a source
+        // of class names too; without it those utilities are never generated.
+        './resources/js/**/*.js',
     ],
 
     theme: {

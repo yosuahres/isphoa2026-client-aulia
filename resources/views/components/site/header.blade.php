@@ -10,7 +10,7 @@
             return request()->path() === '/';
         }
 
-        return request()->is(ltrim($href, '/')) || request()->is(ltrim($href, '/') . '/*');
+        return request()->is(ltrim($href, '/')) || request()->is(ltrim($href, '/').'/*');
     };
 
     $isActive = function (array $item) use ($matches) {
@@ -30,53 +30,45 @@
     $navLink = 'relative flex h-full items-center gap-1.5 whitespace-nowrap text-[0.95rem] font-semibold text-subtle transition-colors hover:text-ink';
 @endphp
 
-{{-- `group` holds the label of the mobile nav group being drilled into. --}}
-<div
-    x-data="{ open: false, group: null }"
-    x-effect="document.body.style.overflow = open ? 'hidden' : ''; if (! open) group = null"
->
-    <header
-        class="surface-light sticky top-0 z-50 border-b bg-paper"
-        :class="open ? 'border-transparent xl:border-line' : 'border-line'"
-    >
-        <x-site.container class="relative flex items-center xl:h-[4.5rem] xl:items-end" ::class="open ? 'h-28' : 'h-16'">
+{{-- Driven by resources/js/app.js rather than Alpine. Alpine evaluates its
+     attribute expressions with new Function(), which would force
+     'unsafe-eval' into the script-src of every page; this menu is small
+     enough that plain JS is the cheaper trade. All state lives in data-*
+     attributes so the markup still describes it. --}}
+<div data-site-nav>
+    <header class="surface-light sticky top-0 z-50 border-b border-line bg-paper" data-nav-header>
+        <x-site.container class="relative flex h-16 items-center xl:h-[4.5rem] xl:items-end" data-nav-bar>
             {{-- While the mobile menu is open the logo takes the centre of the
                  bar, leaving the close button alone on the right. --}}
-            <a
-                href="{{ route('site.home') }}"
-                class="flex shrink-0 flex-col items-start"
-                :class="open ? 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 xl:static xl:translate-x-0 xl:translate-y-0' : ''"
-            >
+            <a href="{{ route('site.home') }}" class="flex shrink-0 flex-col items-start" data-nav-logo>
                 <img
                     src="{{ asset($brand['logoMain']) }}"
                     alt="{{ $event['shortName'] }} {{ $event['edition'] }}"
                     width="{{ $brand['logoMainWidth'] }}"
                     height="{{ $brand['logoMainHeight'] }}"
                     class="h-10 w-auto xl:h-14"
-                    :class="open ? 'hidden xl:block' : ''"
+                    data-nav-logo-wide
                 >
                 <img
                     src="{{ asset($brand['logo']) }}"
                     alt=""
                     width="{{ $brand['logoWidth'] }}"
                     height="{{ $brand['logoHeight'] }}"
-                    class="h-24 w-auto xl:hidden"
-                    x-cloak
-                    x-show="open"
+                    class="hidden h-24 w-auto xl:hidden"
+                    data-nav-logo-mark
                 >
             </a>
 
             <button
                 type="button"
-                @click="open = ! open"
-                :aria-expanded="open"
+                aria-expanded="false"
                 aria-controls="mobile-menu"
-                :aria-label="open ? 'Close menu' : 'Open menu'"
+                aria-label="Open menu"
                 class="-mr-3 ml-auto shrink-0 self-center rounded-full p-3 xl:hidden"
-                :class="open ? 'text-black' : ''"
+                data-nav-toggle
             >
-                <x-site.icon name="menu" :stroke-width="2.4" class="size-6" x-show="! open" />
-                <x-site.icon name="close" :stroke-width="2.4" class="size-6" x-cloak x-show="open" />
+                <span data-nav-icon-menu><x-site.icon name="menu" :stroke-width="2.4" class="size-6" /></span>
+                <span class="hidden" data-nav-icon-close><x-site.icon name="close" :stroke-width="2.4" class="size-6" /></span>
             </button>
         </x-site.container>
 
@@ -136,56 +128,54 @@
 
     <div
         id="mobile-menu"
-        x-cloak
-        x-show="open"
+        hidden
         class="surface-light fixed inset-x-0 bottom-0 top-28 z-40 overflow-y-auto bg-paper xl:hidden"
+        data-nav-panel
     >
         <x-site.container class="pb-10 pt-8">
             <nav aria-label="Mobile" class="text-black">
-                @foreach ($nav as $item)
-                    @if (isset($item['children']))
-                        {{-- A group has no destination of its own; tapping it
-                             swaps this list for its children. --}}
-                        <button
-                            type="button"
-                            x-show="group === null"
-                            @click="group = @js($item['label'])"
-                            class="flex w-full items-center justify-end gap-0 py-4 text-right font-display text-2xl font-semibold tracking-[-0.02em]"
-                        >
-                            {{ $item['label'] }}
-                            <x-site.icon name="chevron" :stroke-width="1.2" class="-ml-0.5 size-8" />
-                        </button>
-                    @else
-                        <a
-                            href="{{ $item['href'] }}"
-                            x-show="group === null"
-                            @if ($isActive($item)) aria-current="page" @endif
-                            class="block py-4 text-right font-display text-2xl font-semibold tracking-[-0.02em]"
-                        >{{ $item['label'] }}</a>
-                    @endif
-                @endforeach
+                {{-- Top level. Tapping a group swaps this list for that group's
+                     own panel below. --}}
+                <div data-nav-level="root">
+                    @foreach ($nav as $item)
+                        @if (isset($item['children']))
+                            <button
+                                type="button"
+                                class="flex w-full items-center justify-end gap-0 py-4 text-right font-display text-2xl font-semibold tracking-[-0.02em]"
+                                data-nav-open-group="{{ $item['label'] }}"
+                            >
+                                {{ $item['label'] }}
+                                <x-site.icon name="chevron" :stroke-width="1.2" class="-ml-0.5 size-8" />
+                            </button>
+                        @else
+                            <a
+                                href="{{ $item['href'] }}"
+                                @if ($isActive($item)) aria-current="page" @endif
+                                class="block py-4 text-right font-display text-2xl font-semibold tracking-[-0.02em]"
+                            >{{ $item['label'] }}</a>
+                        @endif
+                    @endforeach
+                </div>
 
                 @foreach ($nav as $item)
                     @if (isset($item['children']))
-                        <template x-if="group === @js($item['label'])">
-                            <div>
-                                <button
-                                    type="button"
-                                    @click="group = null"
-                                    class="flex w-full items-center justify-end gap-1 py-4 text-right font-display text-2xl font-semibold tracking-[-0.02em] text-subtle"
-                                >
-                                    <x-site.icon name="chevron" :stroke-width="1.2" class="size-8 rotate-90" />
-                                    Back
-                                </button>
+                        <div hidden data-nav-level="{{ $item['label'] }}">
+                            <button
+                                type="button"
+                                class="flex w-full items-center justify-end gap-1 py-4 text-right font-display text-2xl font-semibold tracking-[-0.02em] text-subtle"
+                                data-nav-back
+                            >
+                                <x-site.icon name="chevron" :stroke-width="1.2" class="size-8 rotate-90" />
+                                Back
+                            </button>
 
-                                @foreach ($item['children'] as $child)
-                                    <a
-                                        href="{{ $child['href'] }}"
-                                        class="block py-4 text-right font-display text-3xl font-semibold tracking-[-0.02em]"
-                                    >{{ $child['label'] }}</a>
-                                @endforeach
-                            </div>
-                        </template>
+                            @foreach ($item['children'] as $child)
+                                <a
+                                    href="{{ $child['href'] }}"
+                                    class="block py-4 text-right font-display text-3xl font-semibold tracking-[-0.02em]"
+                                >{{ $child['label'] }}</a>
+                            @endforeach
+                        </div>
                     @endif
                 @endforeach
             </nav>

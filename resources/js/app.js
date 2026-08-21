@@ -11,6 +11,14 @@ function initReveal() {
     const nodes = document.querySelectorAll('[data-reveal]');
     if (nodes.length === 0) return;
 
+    // Applied here rather than as a style attribute in the markup, so the
+    // pages need no 'unsafe-inline' in style-src. CSSOM writes are not
+    // covered by CSP.
+    nodes.forEach((node) => {
+        const delay = node.dataset.revealDelay;
+        if (delay) node.style.setProperty('--reveal-delay', `${delay}ms`);
+    });
+
     // Without IntersectionObserver, show everything rather than nothing.
     if (! ('IntersectionObserver' in window)) {
         nodes.forEach((node) => node.classList.add('is-visible'));
@@ -94,8 +102,103 @@ function initScrollToHash() {
     window.addEventListener('hashchange', run);
 }
 
+/**
+ * Mobile navigation.
+ *
+ * Deliberately not Alpine: Alpine compiles its attribute expressions with
+ * new Function(), so keeping it would mean allowing 'unsafe-eval' in the
+ * script-src of every public page. This menu is small enough that plain DOM
+ * code costs less than that concession.
+ */
+function initSiteNav() {
+    const root = document.querySelector('[data-site-nav]');
+    if (! root) return;
+
+    const header = root.querySelector('[data-nav-header]');
+    const bar = root.querySelector('[data-nav-bar]');
+    const panel = root.querySelector('[data-nav-panel]');
+    const toggle = root.querySelector('[data-nav-toggle]');
+    const logoWide = root.querySelector('[data-nav-logo-wide]');
+    const logoMark = root.querySelector('[data-nav-logo-mark]');
+    const iconMenu = root.querySelector('[data-nav-icon-menu]');
+    const iconClose = root.querySelector('[data-nav-icon-close]');
+    const logo = root.querySelector('[data-nav-logo]');
+    const levels = root.querySelectorAll('[data-nav-level]');
+
+    if (! panel || ! toggle) return;
+
+    let open = false;
+
+    const showLevel = (name) => {
+        levels.forEach((el) => {
+            el.hidden = el.dataset.navLevel !== name;
+        });
+    };
+
+    const render = () => {
+        panel.hidden = ! open;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+
+        // The bar grows while the menu is open so the circular mark fits.
+        bar.classList.toggle('h-16', ! open);
+        bar.classList.toggle('h-28', open);
+        header.classList.toggle('border-line', ! open);
+        header.classList.toggle('border-transparent', open);
+        header.classList.toggle('xl:border-line', open);
+
+        // Centre the logo while open, leaving the close button alone on the right.
+        logo.classList.toggle('absolute', open);
+        logo.classList.toggle('left-1/2', open);
+        logo.classList.toggle('top-1/2', open);
+        logo.classList.toggle('-translate-x-1/2', open);
+        logo.classList.toggle('-translate-y-1/2', open);
+        logo.classList.toggle('xl:static', open);
+        logo.classList.toggle('xl:translate-x-0', open);
+        logo.classList.toggle('xl:translate-y-0', open);
+
+        logoWide.classList.toggle('hidden', open);
+        logoWide.classList.toggle('xl:block', open);
+        logoMark.classList.toggle('hidden', ! open);
+
+        iconMenu.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', ! open);
+
+        // Stop the page behind the overlay from scrolling.
+        document.body.style.overflow = open ? 'hidden' : '';
+
+        if (! open) showLevel('root');
+    };
+
+    toggle.addEventListener('click', () => {
+        open = ! open;
+        render();
+    });
+
+    root.querySelectorAll('[data-nav-open-group]').forEach((button) => {
+        button.addEventListener('click', () => showLevel(button.dataset.navOpenGroup));
+    });
+
+    root.querySelectorAll('[data-nav-back]').forEach((button) => {
+        button.addEventListener('click', () => showLevel('root'));
+    });
+
+    // Escape closes, matching what a keyboard user expects of an overlay.
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && open) {
+            open = false;
+            render();
+            toggle.focus();
+        }
+    });
+
+    showLevel('root');
+    render();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initReveal();
+    initSiteNav();
 
     // Only pages that anchor to an id need this; the rest have no hash.
     if (document.body.dataset.scrollToHash !== undefined) {
