@@ -3,30 +3,29 @@
     <head>
         <x-partials.head />
 
-        <!-- STYLES -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <livewire:styles />
-        
-        <!-- SCRIPTS -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Styles -->
+        @livewireStyles
     </head>
-    
+
     <body class="font-sans antialiased">
-        
+
         <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
             @unless (Auth::check())
                 <x-partials.header />
             @else
-                <x-jet-banner />
+                <x-banner />
                 @livewire('navigation-menu')
                 <!-- Page Heading -->
                 @if (isset($header))
-                <header class="bg-white shadow">
-                    {{ $header }}
-                </header>
+                    <header class="bg-white shadow">
+                        {{ $header }}
+                    </header>
                 @endif
             @endunless
-                
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
@@ -36,6 +35,7 @@
         </div>
 
         @stack('modals')
-        <livewire:scripts />
+
+        @livewireScripts
     </body>
 </html>

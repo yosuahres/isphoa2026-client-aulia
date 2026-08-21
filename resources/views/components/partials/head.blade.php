@@ -23,7 +23,7 @@
 <meta property="og:image:height" content="400">
 <meta property="og:image:alt" content=" Dúvidas">
 <meta property="og:image:type" content="image/png">
-<meta property="og:secure_url" content=”https://base-de-conhecimento.s3.sa-east-1.amazonaws.com/growp-thumb.png”>
+<meta property="og:secure_url" content="https://base-de-conhecimento.s3.sa-east-1.amazonaws.com/growp-thumb.png">
 
 <meta property="twitter:card" content="summary">
 <meta property="twitter:title" content=" Dúvidas">
@@ -47,7 +47,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="">
 <link rel="icon" type="image/png" sizes="96x96" href="">
 <link rel="icon" type="image/png" sizes="16x16" href="">
-<link rel="manifest" href="{{ asset('mix-manifest.json') }}"">
 
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="">
