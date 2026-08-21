@@ -1,7 +1,21 @@
+{{-- The authenticated area's shell. Deliberately self-contained and separate
+     from components/layouts/site.blade.php: the public site runs on the
+     ISPhOA palette (.site-ground / .surface-light), the dashboard on
+     Jetstream's stock grey. --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <x-partials.head />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <link rel="icon" href="{{ asset('brand/logo-circle.jpeg') }}">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -9,29 +23,25 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-
     <body class="font-sans antialiased">
+        <x-banner />
 
-        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
-            @unless (Auth::check())
-                <x-partials.header />
-            @else
-                <x-banner />
-                @livewire('navigation-menu')
-                <!-- Page Heading -->
-                @if (isset($header))
-                    <header class="bg-white shadow">
+        <div class="min-h-screen bg-gray-100">
+            @livewire('navigation-menu')
+
+            <!-- Page Heading -->
+            @if (isset($header))
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
-                    </header>
-                @endif
-            @endunless
+                    </div>
+                </header>
+            @endif
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
-
-            <x-partials.footer />
         </div>
 
         @stack('modals')

@@ -2,6 +2,149 @@
 @tailwind components;
 @tailwind utilities;
 
-[x-cloak] {
-    display: none;
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (min-width: 1280px) {
+        html {
+            scroll-padding-top: 9rem;
+        }
+    }
+
+    body {
+        font-feature-settings: "rlig" 1, "calt" 1;
+        font-synthesis-weight: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer base {
+    /* Dark ground used by the public site shell. */
+    .site-ground {
+        --site-paper: 14 14 67;
+        --site-deep: 7 7 39;
+        --site-mist: 21 21 78;
+        --site-shell: 32 32 105;
+
+        --site-ink: 255 255 255;
+        --site-subtle: 185 186 216;
+        --site-faint: 142 143 184;
+        --site-line: 42 42 104;
+
+        --site-navy: 169 169 240;
+        --site-beam: 167 139 250;
+
+        background-color: rgb(var(--site-paper));
+        background-image: linear-gradient(
+            to bottom,
+            rgb(var(--site-deep)) 0,
+            rgb(var(--site-deep)) 60px,
+            rgb(var(--site-paper)) 950px
+        );
+        background-repeat: no-repeat;
+        color: rgb(var(--site-ink));
+        color-scheme: dark;
+    }
+
+    .site-ground :focus-visible {
+        outline: 2px solid rgb(var(--site-navy));
+        outline-offset: 3px;
+        border-radius: 2px;
+    }
+
+    .site-ground ::selection {
+        background: rgb(var(--site-ink));
+        color: rgb(var(--site-paper));
+    }
+}
+
+@layer components {
+    /* Light panels override the ground tokens in place. */
+    .surface-light {
+        --site-paper: 255 255 255;
+        --site-mist: 245 246 250;
+        --site-shell: 232 234 242;
+        --site-ink: 14 14 67;
+        --site-subtle: 92 93 117;
+        --site-faint: 113 115 140;
+        --site-line: 226 228 238;
+        --site-navy: 43 43 133;
+        --site-beam: 109 63 240;
+
+        background-color: rgb(var(--site-paper));
+        color: rgb(var(--site-ink));
+        color-scheme: light;
+    }
+
+    .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgb(var(--site-subtle));
+    }
+
+    .rule {
+        height: 2px;
+        background: rgb(var(--site-ink));
+    }
+}
+
+@layer components {
+    /* Scroll reveal. Hidden state lives in CSS so it applies before any JS
+       runs and cannot flash; the fallbacks keep content readable with JS off
+       or motion reduced. */
+    .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+            opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+            transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+        will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* No JS: reveal must never leave content invisible. */
+.no-js .reveal {
+    opacity: 1;
+    transform: none;
 }

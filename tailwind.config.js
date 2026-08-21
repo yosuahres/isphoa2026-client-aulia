@@ -2,6 +2,11 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
+// The site palette lives in CSS custom properties so .surface-light can
+// override the whole set in place; <alpha-value> keeps opacity modifiers
+// like bg-shell/55 working.
+const site = (name) => `rgb(var(--site-${name}) / <alpha-value>)`;
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -14,7 +19,20 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                display: ['Inter Tight', 'Inter', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                paper: site('paper'),
+                deep: site('deep'),
+                mist: site('mist'),
+                shell: site('shell'),
+                ink: site('ink'),
+                subtle: site('subtle'),
+                faint: site('faint'),
+                line: site('line'),
+                navy: site('navy'),
+                beam: site('beam'),
             },
         },
     },
