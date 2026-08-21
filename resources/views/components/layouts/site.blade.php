@@ -31,7 +31,7 @@
         <meta property="og:image" content="{{ asset('brand/logo-main.png') }}">
         <meta name="twitter:card" content="summary_large_image">
 
-        <link rel="icon" href="{{ asset('brand/logo-circle.jpeg') }}">
+        <x-favicon />
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|inter-tight:600,700&display=swap" rel="stylesheet">
