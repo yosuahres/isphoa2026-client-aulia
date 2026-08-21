@@ -31,7 +31,7 @@ Route::name('app.')->group(function(){
     })->name('articles');
 
     Route::get('/blog/artigo/{slug}', function($slug){
-        return "Página do artigo $slug";
+        return "Página do artigo ".e($slug);
     })->name('article');
 
     Route::get('/blog/categorias', function(){
@@ -39,11 +39,11 @@ Route::name('app.')->group(function(){
     })->name('categories');
 
     Route::get('/blog/categoria/{id}', function($id){
-        return "Página da categoria $id";
-    })->name('category');
+        return "Página da categoria ".e($id);
+    })->whereNumber('id')->name('category');
 
     Route::get('/pesquisa/{search}', function($search){
-        return "Página de resultados de $search";
+        return "Página de resultados de ".e($search);
     })->name('search')->where('search', '.*');
 
     Route::get('/contato', function(){
