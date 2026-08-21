@@ -104,11 +104,11 @@ return [
     ],
     'brand' => [
         'logo' => '/brand/logo-circle.jpeg',
-        'logoWidth' => 1600,
-        'logoHeight' => 1600,
+        'logoWidth' => 384,
+        'logoHeight' => 384,
         'logoMain' => '/brand/logo-main.png',
-        'logoMainWidth' => 6249,
-        'logoMainHeight' => 2640,
+        'logoMainWidth' => 560,
+        'logoMainHeight' => 236,
     ],
     'colophon' => 'ISPhOA 2026 · Batusangkar · 2–3 Dec 2026',
     'committee' => [
