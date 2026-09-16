@@ -36,6 +36,8 @@ export default {
                 line: site('line'),
                 navy: site('navy'),
                 beam: site('beam'),
+                flare: site('flare'),
+                sand: site('sand'),
             },
         },
     },

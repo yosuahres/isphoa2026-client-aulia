@@ -4,15 +4,19 @@
 @section('description', "Plenary, keynote and invited speakers at {$event['shortName']} {$event['edition']}, including researchers from ITB, ITS, the University of Southampton, NYU Abu Dhabi, CSIR-NCL and Chulalongkorn University.")
 
 <x-layouts.site :scroll-to-hash="true">
-    <div class="surface-light bg-mist">
-        <x-site.container class="py-16 md:py-20">
-            {{-- The design gives this page no visible header, but every page still
-                 needs exactly one h1 for crawlers and screen readers. --}}
-            <h1 class="sr-only">Speakers</h1>
+    <div class="field-navy relative overflow-clip">
+        {{-- This page's plate, dimmed. Each inner page draws a different optical
+             figure, so no two of them read as the same picture; this one runs
+             far enough that it takes 3 copies, turned differently, rather than
+             leaving everything above the foot of the panel bare. --}}
+        <x-site.dot-field plate="fringes" :soft="true" :repeat="3" />
+
+        <x-site.container wide class="relative z-10 py-16 md:py-20">
+            <x-site.page-header class="mb-10 md:mb-14">Speakers</x-site.page-header>
 
             @foreach (config('isphoa.speakerGroups') as $groupIndex => $group)
                 <section @class(['mt-24 md:mt-28' => $groupIndex > 0])>
-                    <h2 class="font-display text-[clamp(1.6rem,4vw,2.5rem)] font-semibold uppercase tracking-[-0.02em] text-navy">
+                    <h2 class="font-display text-[clamp(1.6rem,4vw,2.5rem)] font-semibold uppercase tracking-[-0.02em] text-flare">
                         {{ $group['heading'] }}
                     </h2>
 
@@ -40,17 +44,17 @@
                                 </h3>
 
                                 @if (! empty($speaker['institution']))
-                                    <p class="mt-2 text-center text-[0.9rem] text-subtle">{{ $speaker['institution'] }}</p>
+                                    <p class="mt-2 text-center text-[1.05rem] text-subtle">{{ $speaker['institution'] }}</p>
                                 @endif
                             </div>
 
                             <div class="mx-auto mt-10 max-w-5xl">
                                 @forelse ($speaker['bio'] as $p => $paragraph)
-                                    <p @class(['hyphens-auto text-justify text-[1.02rem] leading-[1.8]', 'mt-1.5' => $p > 0])>
+                                    <p @class(['hyphens-auto text-justify text-[1.15rem] leading-[1.8]', 'mt-1.5' => $p > 0])>
                                         {{ $paragraph }}
                                     </p>
                                 @empty
-                                    <p class="hyphens-auto text-justify text-[1.02rem] leading-[1.8] text-subtle">
+                                    <p class="hyphens-auto text-justify text-[1.15rem] leading-[1.8] text-subtle">
                                         @if (! empty($speaker['name']))
                                             A full biography for {{ $speaker['name'] }} is not published yet.
                                         @else

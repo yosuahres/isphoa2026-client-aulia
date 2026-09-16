@@ -4,18 +4,21 @@
     $secretariat = config('isphoa.secretariat');
 @endphp
 
-<footer class="surface-light border-t border-line bg-mist">
-    <x-site.container class="pb-16 pt-20">
-        <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
+<footer class="surface-light border-t border-line bg-paper">
+    {{-- The wide measure starts the brand mark further left and, more to the
+         point, buys the address column enough width that its four lines set on
+         four lines instead of eight — which is what drove the footer's height. --}}
+    <x-site.container wide class="pb-6 pt-10">
+        <div class="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-[0.9fr_1.6fr_0.9fr]">
             <div>
                 <img
                     src="{{ asset($brand['logoMain']) }}"
                     alt="{{ $event['shortName'] }} {{ $event['edition'] }}"
                     width="{{ $brand['logoMainWidth'] }}"
                     height="{{ $brand['logoMainHeight'] }}"
-                    class="h-[72px] w-auto mix-blend-multiply md:h-24"
+                    class="h-14 w-auto md:h-[72px]"
                 >
-                <p class="mt-5 max-w-xs text-[0.83rem] leading-[1.75] text-subtle">
+                <p class="mt-4 max-w-xs text-[0.83rem] leading-[1.65] text-subtle">
                     {{ config('isphoa.footerBlurb') }}
                 </p>
             </div>
@@ -24,7 +27,7 @@
                 <p class="font-display text-[1.25rem] font-semibold tracking-[-0.02em]">Get In Touch</p>
                 <div class="rule mt-3 w-20"></div>
 
-                <address class="mt-6 space-y-3.5 text-[0.85rem] not-italic leading-[1.7] text-subtle">
+                <address class="mt-4 space-y-2.5 text-[0.85rem] not-italic leading-[1.55] text-subtle">
                     <div class="flex items-start gap-2.5">
                         <x-site.icon name="pin" class="mt-1 size-3.5 shrink-0 text-faint" />
                         <span>
@@ -58,7 +61,7 @@
                 <nav aria-label="{{ $column['heading'] }}">
                     <p class="font-display text-[1.25rem] font-semibold tracking-[-0.02em]">{{ $column['heading'] }}</p>
                     <div class="rule mt-3 w-20"></div>
-                    <ul class="mt-6 space-y-3 text-[0.85rem]">
+                    <ul class="mt-4 space-y-2 text-[0.85rem]">
                         @foreach ($column['links'] as $link)
                             <li>
                                 @if (! empty($link['href']))
@@ -74,5 +77,11 @@
                 </nav>
             @endforeach
         </div>
+
+        {{-- The copyright sets as the footer's last row rather than its own
+             band, so the page ends on one block instead of two. --}}
+        <p class="mt-8 border-t border-line pt-5 text-center text-[0.78rem] text-subtle">
+            {{ config('isphoa.copyright') }}
+        </p>
     </x-site.container>
 </footer>

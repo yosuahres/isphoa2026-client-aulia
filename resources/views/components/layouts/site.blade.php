@@ -26,7 +26,7 @@
 
         {{-- The homepage passes no title and takes the bare site name; every
              other page fills the template, matching the Next.js metadata. --}}
-        <title>@hasSection('title')@yield('title') · {{ $siteName }}@else{{ $siteName }} · {{ $event['fullName'] }}@endif</title>
+        <title>@hasSection('title')@yield('title') · {{ $siteName }}@else{{ $siteName }}@endif</title>
         <meta name="description" content="@yield('description', $defaultDescription)">
         <link rel="canonical" href="{{ $canonical }}">
 
@@ -69,7 +69,7 @@
                 {{ $slot }}
             </main>
 
-            <x-site.copyright />
+            <x-site.footer />
         </div>
     </body>
 </html>

@@ -58,7 +58,7 @@
                 'endDate' => $event['endsAt'],
                 'eventStatus' => 'https://schema.org/EventScheduled',
                 'eventAttendanceMode' => 'https://schema.org/MixedEventAttendanceMode',
-                'image' => [Seo::absoluteUrl('/photos/gedung.png')],
+                'image' => [Seo::absoluteUrl('/photos/gedung.jpg')],
                 'inLanguage' => 'en',
                 'isAccessibleForFree' => false,
                 'keywords' => implode(', ', array_column($tracks, 'title')),

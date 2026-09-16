@@ -27,6 +27,7 @@
         'download' => '<path d="M12 3.5v11m0 0 4-4m-4 4-4-4" /><path d="M4.5 17v2.5h15V17" />',
         'check' => '<path d="m4.5 12.5 5 5 10-11" />',
         'menu' => '<path d="M3.5 7h17M3.5 12h17M3.5 17h17" />',
+        'expand' => '<path d="M9 4.5H4.5V9M15 4.5h4.5V9M9 19.5H4.5V15M15 19.5h4.5V15" />',
         'close' => '<path d="m5.5 5.5 13 13M18.5 5.5l-13 13" />',
         'external' => '<path d="M14 4.5h5.5V10" /><path d="M19.5 4.5 11 13" /><path d="M18 14v5.5H4.5V6H10" />',
     ];

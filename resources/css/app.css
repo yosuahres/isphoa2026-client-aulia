@@ -5,13 +5,13 @@
 @layer base {
     html {
         scroll-behavior: smooth;
-        scroll-padding-top: 5rem;
+        scroll-padding-top: 4.5rem;
         -webkit-tap-highlight-color: transparent;
     }
 
     @media (min-width: 1280px) {
         html {
-            scroll-padding-top: 9rem;
+            scroll-padding-top: 5rem;
         }
     }
 
@@ -28,20 +28,30 @@
 }
 
 @layer base {
-    /* Dark ground used by the public site shell. */
+    /* Brand constants, sampled off the mark: the swoosh's orange, and a sand
+       held at the same hue. They do not change with the surface, so they sit
+       outside both palettes. */
+    :root {
+        --site-flare: 239 72 13;
+        --site-sand: 243 215 205;
+    }
+
+    /* Dark ground used by the public site shell, keyed to the same navy the
+       hero and the sections below it are painted in -- #001a2d. The indigo and
+       violet the palette started on read as purple against it. */
     .site-ground {
-        --site-paper: 14 14 67;
-        --site-deep: 7 7 39;
-        --site-mist: 21 21 78;
-        --site-shell: 32 32 105;
+        --site-paper: 0 26 45;
+        --site-deep: 0 18 32;
+        --site-mist: 8 40 62;
+        --site-shell: 18 56 80;
 
         --site-ink: 255 255 255;
-        --site-subtle: 185 186 216;
-        --site-faint: 142 143 184;
-        --site-line: 42 42 104;
+        --site-subtle: 168 191 205;
+        --site-faint: 124 150 168;
+        --site-line: 24 60 82;
 
-        --site-navy: 169 169 240;
-        --site-beam: 167 139 250;
+        --site-navy: 122 200 208;
+        --site-beam: 96 185 200;
 
         background-color: rgb(var(--site-paper));
         background-image: linear-gradient(
@@ -71,14 +81,14 @@
     /* Light panels override the ground tokens in place. */
     .surface-light {
         --site-paper: 255 255 255;
-        --site-mist: 245 246 250;
-        --site-shell: 232 234 242;
-        --site-ink: 14 14 67;
-        --site-subtle: 92 93 117;
-        --site-faint: 113 115 140;
-        --site-line: 226 228 238;
-        --site-navy: 43 43 133;
-        --site-beam: 109 63 240;
+        --site-mist: 244 247 249;
+        --site-shell: 226 234 240;
+        --site-ink: 0 26 45;
+        --site-subtle: 82 100 115;
+        --site-faint: 100 120 136;
+        --site-line: 222 231 237;
+        --site-navy: 12 84 112;
+        --site-beam: 40 150 170;
 
         background-color: rgb(var(--site-paper));
         color: rgb(var(--site-ink));
@@ -100,6 +110,232 @@
         height: 2px;
         background: rgb(var(--site-ink));
     }
+
+    /* Below lg the photograph leads the hero instead of standing beside it, so
+       the same dissolve runs downward: full strength through the top 45%, the
+       part the sticky bar floats on, then out to nothing by its bottom edge so
+       the copy underneath starts on clean navy. Same smoothstep ramp as the
+       wide layout's, turned through ninety degrees. */
+    @media (max-width: 1023.98px) {
+        .hero-photo {
+            --hero-fade: linear-gradient(
+                to bottom,
+                rgb(0 0 0 / 1) 45%,
+                rgb(0 0 0 / 0.97) 50%,
+                rgb(0 0 0 / 0.9) 55%,
+                rgb(0 0 0 / 0.78) 61%,
+                rgb(0 0 0 / 0.65) 66%,
+                rgb(0 0 0 / 0.5) 72%,
+                rgb(0 0 0 / 0.35) 78%,
+                rgb(0 0 0 / 0.22) 84%,
+                rgb(0 0 0 / 0.1) 89%,
+                rgb(0 0 0 / 0.03) 94%,
+                rgb(0 0 0 / 0) 100%
+            );
+
+            -webkit-mask-image: var(--hero-fade);
+            mask-image: var(--hero-fade);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        /* The picture keeps to the right and dissolves into the colour field
+           on its leading edge. The ramp is a smoothstep rather than a straight
+           line -- sampled at every tenth, gentle at both ends and steepest
+           through the middle -- because a linear ramp in alpha reads as two
+           creases, one where the fade starts and one where it finishes. It runs
+           across the leading fifth of the picture's own box -- enough to give
+           the copy a clean edge, and no more, so the picture keeps the rest. */
+        .hero-photo {
+            --hero-fade: linear-gradient(
+                to right,
+                rgb(0 0 0 / 0) 0%,
+                rgb(0 0 0 / 0.03) 2%,
+                rgb(0 0 0 / 0.1) 4%,
+                rgb(0 0 0 / 0.22) 6%,
+                rgb(0 0 0 / 0.35) 8%,
+                rgb(0 0 0 / 0.5) 10%,
+                rgb(0 0 0 / 0.65) 12%,
+                rgb(0 0 0 / 0.78) 14%,
+                rgb(0 0 0 / 0.9) 16%,
+                rgb(0 0 0 / 0.97) 18%,
+                rgb(0 0 0 / 1) 20%
+            );
+
+            -webkit-mask-image: var(--hero-fade);
+            mask-image: var(--hero-fade);
+        }
+    }
+
+    /* The bar once it scrolls: blur under a wash of the page's own navy, faded
+       out before its bottom edge so it dissolves into the page rather than
+       ending on a line. The mask holds full strength through the top 55%, the
+       row the type sits on, and only fades below it. The wash is there because
+       blur alone will not hold type over the photograph. */
+    .site-topbar {
+        background-image: linear-gradient(
+            to bottom,
+            rgb(8 40 62 / 0.85),
+            rgb(8 40 62 / 0.5)
+        );
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+        mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    }
+
+    .field-flare {
+        background-color: rgb(var(--site-flare));
+    }
+
+    .field-sand {
+        background-color: rgb(var(--site-sand));
+    }
+
+    /* Dropdown panel: the bar's frosted treatment without the fade -- a rounded
+       pane floating over whatever is behind it. */
+    .site-dropdown {
+        background-color: rgb(255 255 255 / 0.94);
+        border: 1px solid rgb(0 26 45 / 0.1);
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
+    }
+
+    /* The flat navy behind the hero and the speaker wall. Not a palette token
+       -- this is the reference navy the design was matched to, #001a2d --
+       and it lives in one place so the two panels cannot drift apart. */
+    .field-navy {
+        background-color: rgb(0 26 45);
+    }
+
+    /* The prism point-cloud plate behind the speaker wall. The render is laid
+       on this same navy, so the plate dissolves into the panel and only the
+       points read -- texture in the field rather than a photograph pasted over
+       it. The masks below take it out on every side, so the plate is never
+       seen to end. */
+    /* The fades that keep a plate from ever being seen to end. A straight
+       linear ramp begins and ends on a line of its own -- the very edge it is
+       meant to hide -- so these are smoothstepped: they leave and reach the
+       ground gently and do their work in the middle. Wide, too: a third of the
+       plate either side, which at these opacities is what it takes for the cut
+       to disappear rather than merely soften. */
+    .dot-field,
+    .dot-field-fill,
+    .dot-field-tile {
+        --dot-fade-x: linear-gradient(
+            to right,
+            transparent 0%,
+            rgb(0 0 0 / 0.06) 8%,
+            rgb(0 0 0 / 0.24) 16%,
+            rgb(0 0 0 / 0.58) 25%,
+            rgb(0 0 0 / 0.88) 32%,
+            #000 38%,
+            #000 62%,
+            rgb(0 0 0 / 0.88) 68%,
+            rgb(0 0 0 / 0.58) 75%,
+            rgb(0 0 0 / 0.24) 84%,
+            rgb(0 0 0 / 0.06) 92%,
+            transparent 100%
+        );
+        --dot-fade-y: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgb(0 0 0 / 0.06) 7%,
+            rgb(0 0 0 / 0.24) 15%,
+            rgb(0 0 0 / 0.58) 24%,
+            rgb(0 0 0 / 0.88) 31%,
+            #000 37%,
+            #000 63%,
+            rgb(0 0 0 / 0.88) 69%,
+            rgb(0 0 0 / 0.58) 76%,
+            rgb(0 0 0 / 0.24) 85%,
+            rgb(0 0 0 / 0.06) 93%,
+            transparent 100%
+        );
+        /* Intersected, so the corners go too and no straight edge survives. */
+        -webkit-mask-composite: source-in;
+        mask-composite: intersect;
+    }
+
+    .dot-field {
+        opacity: 0.55;
+        /* Standing on the foot of the panel, so its own bottom edge is flush
+           with the panel's and only the top and the flanks need taking out. */
+        -webkit-mask-image:
+            linear-gradient(
+                to top,
+                #000 0%,
+                #000 26%,
+                rgb(0 0 0 / 0.88) 38%,
+                rgb(0 0 0 / 0.58) 52%,
+                rgb(0 0 0 / 0.24) 68%,
+                rgb(0 0 0 / 0.06) 82%,
+                transparent 94%
+            ),
+            var(--dot-fade-x);
+        mask-image:
+            linear-gradient(
+                to top,
+                #000 0%,
+                #000 26%,
+                rgb(0 0 0 / 0.88) 38%,
+                rgb(0 0 0 / 0.58) 52%,
+                rgb(0 0 0 / 0.24) 68%,
+                rgb(0 0 0 / 0.06) 82%,
+                transparent 94%
+            ),
+            var(--dot-fade-x);
+    }
+
+    /* Fill mode: the plate is cropped to the whole panel, so every side of it
+       is a cut and every side has to go. */
+    .dot-field-fill {
+        /* 0.40 keeps every point at 5:1 or better against white, which is what
+           the topic list is set in, so the plate can carry more of the panel
+           than the inner-page treatment does. */
+        opacity: 0.4;
+        -webkit-mask-image: var(--dot-fade-y), var(--dot-fade-x);
+        mask-image: var(--dot-fade-y), var(--dot-fade-x);
+    }
+
+    /* Tile mode: a panel too tall for one plate takes several down its height,
+       so the light carries the whole way rather than standing only on the
+       foot. Each copy goes on all four sides, so where two of them meet there
+       is no seam, where none reaches there is navy, and neither flank of the
+       panel shows a cut. */
+    .dot-field-tile {
+        opacity: 0.55;
+        -webkit-mask-image: var(--dot-fade-y), var(--dot-fade-x);
+        mask-image: var(--dot-fade-y), var(--dot-fade-x);
+    }
+
+    /* For the inner pages, whose copy runs the whole height of the panel
+       rather than clearing its foot the way the speaker wall does. 0.24 is the
+       ceiling: above it the brightest points in the plates take the muted body
+       colour (--site-subtle) below 4.5:1, and body text on these pages does sit
+       over the artwork. The wall itself can afford 0.55 because only headings
+       and photo cards cross it, and those are held to 3:1. */
+    .dot-field-soft {
+        opacity: 0.24;
+    }
+}
+
+@layer components {
+    /* The scroll cue at the foot of the hero: a mouse shell with its wheel
+       riding down the barrel and out, so the gesture reads without a caption.
+       The travel stays inside the shell -- 6px down from a 8px start on a 40px
+       body -- and it fades at both ends so the dot appears at the top rather
+       than snapping back to it. */
+    .scroll-cue-wheel {
+        animation: scroll-cue-wheel 1.9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    @keyframes scroll-cue-wheel {
+        0%   { transform: translateY(0);    opacity: 0; }
+        22%  { transform: translateY(2px);  opacity: 1; }
+        70%  { transform: translateY(10px); opacity: 1; }
+        100% { transform: translateY(13px); opacity: 0; }
+    }
 }
 
 @layer components {
@@ -119,6 +355,18 @@
     .reveal.is-visible {
         opacity: 1;
         transform: none;
+    }
+}
+
+/* The about copy is a long block of type, and on a phone it comes into view
+   while the reader is already on it -- the fade-up then reads as the text
+   arriving late rather than as motion. Below lg it sets straight away. Written
+   outside @layer so it beats the layered .reveal without needing !important. */
+@media (max-width: 1023.98px) {
+    #about .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
 
@@ -147,4 +395,12 @@
 .no-js .reveal {
     opacity: 1;
     transform: none;
+}
+
+/* Preflight hides [hidden] at the same weight as a utility class, and the
+   utilities are written after it -- so a panel carrying both `hidden` and
+   `flex`, like the poster's full-size view, would still be laid out. This is
+   the one place a display rule has to win outright. */
+[hidden] {
+    display: none !important;
 }

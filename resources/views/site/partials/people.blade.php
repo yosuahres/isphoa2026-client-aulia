@@ -5,7 +5,7 @@
      passes nine, which it does: the technical program committee runs to 31. --}}
 <ol class="mt-3 grid gap-y-1.5">
     @foreach ($names as $i => $name)
-        <li class="grid grid-cols-[1.5rem_1fr] gap-x-2 text-[0.925rem] leading-[1.7] text-ink">
+        <li class="grid grid-cols-[1.5rem_1fr] gap-x-2 text-[1.15rem] leading-[1.75] text-ink">
             <span aria-hidden="true" class="text-right tabular-nums text-faint">{{ $i + 1 }}.</span>
             <span>{{ $name }}</span>
         </li>
