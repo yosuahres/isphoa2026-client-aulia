@@ -29,6 +29,7 @@ Route::name('site.')->group(function () {
     Route::view('/submission', 'site.submission')->name('submission');
     Route::view('/peer-review', 'site.peer-review')->name('peer-review');
     Route::view('/publication', 'site.publication')->name('publication');
+    Route::view('/registration', 'site.registration')->name('registration');
 });
 
 /*

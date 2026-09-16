@@ -40,6 +40,11 @@
                     variant="flare"
                     class="!rounded-lg font-bold uppercase tracking-wider"
                 >Call for Papers</x-site.link-button>
+                <x-site.link-button
+                    href="{{ route('site.submission') }}"
+                    variant="solid"
+                    class="!rounded-lg font-bold uppercase tracking-wider"
+                >Paper Submission</x-site.link-button>
             </x-site.reveal>
         </div>
     </x-site.container>

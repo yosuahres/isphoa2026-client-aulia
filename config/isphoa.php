@@ -650,14 +650,27 @@ return [
         ],
         [
             'label' => 'Committee',
-            'href' => '/committee',
+            'children' => [
+                [
+                    'label' => 'Patronage',
+                    'href' => '/committee/patronage',
+                ],
+                [
+                    'label' => 'Advisory Board',
+                    'href' => '/committee/advisory-board',
+                ],
+                [
+                    'label' => 'Technical Program Committee',
+                    'href' => '/committee/technical-program',
+                ],
+                [
+                    'label' => 'Organizing Committee',
+                    'href' => '/committee/organizing',
+                ],
+            ],
         ],
         [
-            'label' => 'Venue',
-            'href' => '/venue',
-        ],
-        [
-            'label' => 'Programme',
+            'label' => 'Conference',
             'children' => [
                 [
                     'label' => 'Important Dates',
@@ -667,20 +680,36 @@ return [
                     'label' => 'Speakers',
                     'href' => '/speakers',
                 ],
-            ],
-        ],
-        [
-            'label' => 'Authors',
-            'children' => [
                 [
                     'label' => 'Call for Papers',
                     'href' => '/call-for-papers',
                 ],
                 [
-                    'label' => 'Submission',
-                    'href' => '/submission',
+                    'label' => 'Venue',
+                    'href' => '/venue',
                 ],
             ],
+        ],
+        [
+            'label' => 'For Authors',
+            'children' => [
+                [
+                    'label' => 'Paper Submission',
+                    'href' => '/submission',
+                ],
+                [
+                    'label' => 'Peer Review Process',
+                    'href' => '/peer-review',
+                ],
+                [
+                    'label' => 'SPIE Publication',
+                    'href' => '/publication',
+                ],
+            ],
+        ],
+        [
+            'label' => 'Registration',
+            'href' => '/registration',
         ],
     ],
     'organizers' => [
@@ -706,35 +735,6 @@ return [
         ],
     ],
     'paymentNote' => 'Payments are processed by Midtrans. Bank transfer, virtual account, QRIS, e-wallet and credit card are all supported. Your registration is confirmed automatically once the payment clears, and a receipt is emailed to you.',
-    'plenarySpeakers' => [
-        [
-            'slug' => 'brian-yuliarto',
-            'name' => 'Prof. Brian Yuliarto, S.T., M.Eng., Ph.D.',
-            'role' => 'Plenary',
-            'institution' => 'Minister of Higher Education, Science and Technology · Bandung Institute of Technology, Indonesia',
-            'topic' => null,
-            'photo' => '/photos/speakers/plenary/Picture1.jpg',
-            'bio' => [
-                'He is a Professor in advanced functional materials, specialized in nanomaterials and biosensors, from the Bandung Institute of Technology. He graduated in 1999 from the Department of Engineering Physics ITB, and earned his M.Sc. (2002) and Ph.D. (2005) in Quantum Engineering and System Science from the University of Tokyo, Japan. His research focuses on the development of nanotechnology-based sensors for detecting hazardous gases, environmental pollutants, and diagnosing diseases like cancer, hepatitis, and dengue fever. He has authored over 326 publications in international journals indexed by Scopus, with an h-index of 43. He received the Habibie Prize in 2024, a recognition as the top researcher in Nanoscience & Nanotechnology in Indonesia in 2023, and was listed among the world\'s top 2% of scientists in 2024. He was named the best researcher at ITB in 2021 and received the outstanding lecturer award in Science and Technology at ITB in 2017.',
-                'Since 2025, he has been appointed as Minister of Higher Education, Science, and Technology. Previously he served as the Vice Rector of Research and Innovation, as the Dean of the Faculty of Industrial Technology, and as the Head of the Engineering Physics Department of the Bandung Institute of Technology.',
-            ],
-        ],
-    ],
-    'programme' => [],
-    'registrationNote' => 'All registrations include full seminar access, proceedings, and certificate of participation.',
-    'secretariat' => [
-        'heading' => 'Local Organizer',
-        'lines' => [
-            'Sekretariat: Laboratorium Elektronika dan Instrumentasi (Gedung L)',
-            'Tadris Fisika, Fakultas Tarbiyah dan Ilmu Keguruan',
-            'UIN Mahmud Yunus Batusangkar',
-            'Jalan Sudirman No. 137, Limo Kaum 27217',
-        ],
-        'phoneLabel' => '(0752) 71150',
-        'phoneHref' => 'tel:+6275271150',
-        'email' => 'isphoa2026@uinmybatusangkar.ac.id',
-    ],
-    'speakerGroups' => [
     'peerReview' => [
         'heading' => 'Workflow of the Reviewing Process',
         'steps' => [
@@ -778,6 +778,43 @@ return [
             ],
         ],
     ],
+    'plenarySpeakers' => [
+        [
+            'slug' => 'brian-yuliarto',
+            'name' => 'Prof. Brian Yuliarto, S.T., M.Eng., Ph.D.',
+            'role' => 'Plenary',
+            'institution' => 'Minister of Higher Education, Science and Technology · Bandung Institute of Technology, Indonesia',
+            'topic' => null,
+            'photo' => '/photos/speakers/plenary/Picture1.jpg',
+            'bio' => [
+                'He is a Professor in advanced functional materials, specialized in nanomaterials and biosensors, from the Bandung Institute of Technology. He graduated in 1999 from the Department of Engineering Physics ITB, and earned his M.Sc. (2002) and Ph.D. (2005) in Quantum Engineering and System Science from the University of Tokyo, Japan. His research focuses on the development of nanotechnology-based sensors for detecting hazardous gases, environmental pollutants, and diagnosing diseases like cancer, hepatitis, and dengue fever. He has authored over 326 publications in international journals indexed by Scopus, with an h-index of 43. He received the Habibie Prize in 2024, a recognition as the top researcher in Nanoscience & Nanotechnology in Indonesia in 2023, and was listed among the world\'s top 2% of scientists in 2024. He was named the best researcher at ITB in 2021 and received the outstanding lecturer award in Science and Technology at ITB in 2017.',
+                'Since 2025, he has been appointed as Minister of Higher Education, Science, and Technology. Previously he served as the Vice Rector of Research and Innovation, as the Dean of the Faculty of Industrial Technology, and as the Head of the Engineering Physics Department of the Bandung Institute of Technology.',
+            ],
+        ],
+    ],
+    'programme' => [],
+    'publishing' => [
+        'heading' => 'Paper Publishing Process',
+        'steps' => [
+            'Only ACCEPTED and PRESENTED papers will be eligible for publication in the SPIE Proceedings.',
+            'The organizer of ISPhOA 2026 has signed a mutual contract with SPIE to publish ACCEPTED and PRESENTED papers that pass the quality standards in the SPIE Proceedings.',
+            'Authors who have presented their papers at the ISPhOA 2026 seminar will be notified to submit their camera-ready manuscripts through the SPIE Submission System. Access to the SPIE Submission System will be given after the seminar ends.',
+        ],
+    ],
+    'registrationNote' => 'All registrations include full seminar access, proceedings, and certificate of participation.',
+    'secretariat' => [
+        'heading' => 'Local Organizer',
+        'lines' => [
+            'Sekretariat: Laboratorium Elektronika dan Instrumentasi (Gedung L)',
+            'Tadris Fisika, Fakultas Tarbiyah dan Ilmu Keguruan',
+            'UIN Mahmud Yunus Batusangkar',
+            'Jalan Sudirman No. 137, Limo Kaum 27217',
+        ],
+        'phoneLabel' => '(0752) 71150',
+        'phoneHref' => 'tel:+6275271150',
+        'email' => 'isphoa2026@uinmybatusangkar.ac.id',
+    ],
+    'speakerGroups' => [
         [
             'heading' => 'Plenary Speaker',
             'people' => [
@@ -793,14 +830,6 @@ return [
                         'Since 2025, he has been appointed as Minister of Higher Education, Science, and Technology. Previously he served as the Vice Rector of Research and Innovation, as the Dean of the Faculty of Industrial Technology, and as the Head of the Engineering Physics Department of the Bandung Institute of Technology.',
                     ],
                 ],
-    'publishing' => [
-        'heading' => 'Paper Publishing Process',
-        'steps' => [
-            'Only ACCEPTED and PRESENTED papers will be eligible for publication in the SPIE Proceedings.',
-            'The organizer of ISPhOA 2026 has signed a mutual contract with SPIE to publish ACCEPTED and PRESENTED papers that pass the quality standards in the SPIE Proceedings.',
-            'Authors who have presented their papers at the ISPhOA 2026 seminar will be notified to submit their camera-ready manuscripts through the SPIE Submission System. Access to the SPIE Submission System will be given after the seminar ends.',
-        ],
-    ],
             ],
         ],
         [
