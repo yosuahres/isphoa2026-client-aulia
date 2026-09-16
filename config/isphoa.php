@@ -202,11 +202,11 @@ return [
             'roles' => [
                 [
                     'role' => 'General Chair',
-                    'name' => 'Dr. Frans Agustiyanto',
+                    'name' => 'Dr. Frans Rizal Agustiyanto',
                 ],
                 [
                     'role' => 'Co-Chair',
-                    'name' => 'Dr.rer.nat. Maulidanur',
+                    'name' => 'Dr.rer.nat. Muldalisnur',
                 ],
                 [
                     'role' => 'Secretary',

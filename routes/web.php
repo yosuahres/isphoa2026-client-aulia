@@ -15,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('site.')->group(function () {
     Route::view('/', 'site.home')->name('home');
-    Route::view('/committee', 'site.committee')->name('committee');
+    // One page per body. /committee was a single page before the split, so
+    // it forwards to the first of them rather than breaking indexed links.
+    Route::redirect('/committee', '/committee/patronage', 301);
+    Route::view('/committee/patronage', 'site.committee', ['section' => 'patronage'])->name('committee.patronage');
+    Route::view('/committee/advisory-board', 'site.committee', ['section' => 'advisory-board'])->name('committee.advisory-board');
+    Route::view('/committee/technical-program', 'site.committee', ['section' => 'technical-program'])->name('committee.technical-program');
+    Route::view('/committee/organizing', 'site.committee', ['section' => 'organizing'])->name('committee.organizing');
+    Route::view('/venue', 'site.venue')->name('venue');
     Route::view('/important-dates', 'site.important-dates')->name('important-dates');
     Route::view('/speakers', 'site.speakers')->name('speakers');
     Route::view('/call-for-papers', 'site.call-for-papers')->name('call-for-papers');

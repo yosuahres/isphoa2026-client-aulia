@@ -101,7 +101,10 @@ class Seo
             ['route' => 'site.publication', 'changefreq' => 'monthly', 'priority' => '0.8'],
             ['route' => 'site.important-dates', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['route' => 'site.speakers', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['route' => 'site.committee', 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['route' => 'site.committee.patronage', 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['route' => 'site.committee.advisory-board', 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['route' => 'site.committee.technical-program', 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['route' => 'site.committee.organizing', 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['route' => 'site.venue', 'changefreq' => 'monthly', 'priority' => '0.6'],
         ];
     }
