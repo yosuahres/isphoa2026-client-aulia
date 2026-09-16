@@ -95,6 +95,23 @@ return [
         'quote' => 'We invite researchers and engineers worldwide to join us for a seminar dedicated to the science of light, in the heart of Minangkabau.',
         'quoteAttribution' => 'ORGANIZING COMMITTEE CHAIR · ISPhOA 2026',
     ],
+    /*
+     | The news strip under the bar. Set to null to take it off the site --
+     | every page reads this one key, so a passed announcement needs no markup
+     | change. 'text' is set in caps by the stylesheet, so it is written here
+     | the way it would be read aloud.
+     |
+     | 'href' pointing at an image opens it full size over the page, the way
+     | the Call for Papers poster does; anything else is followed as a plain
+     | link. 'imageWidth' and 'imageHeight' are the file's own pixels, so the
+     | overlay reserves the right box before it loads.
+     */
+    'announcement' => [
+        'text' => 'Paper Submission Deadline Extended — October 15th, 2026',
+        'href' => '/photos/submission-deadline-extended.jpg',
+        'imageWidth' => 1024,
+        'imageHeight' => 1536,
+    ],
     'authorDocuments' => [
         'guidelines' => '/documents/ISPhOA-2026-Paper-Submission-Guidelines.docx',
         'ethics' => '/documents/SPIE-Guidelines-for-Ethical-Publishing.pdf',
