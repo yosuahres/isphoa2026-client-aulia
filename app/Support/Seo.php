@@ -97,6 +97,8 @@ class Seo
             ['route' => 'site.home', 'changefreq' => 'weekly', 'priority' => '1.0'],
             ['route' => 'site.call-for-papers', 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['route' => 'site.submission', 'changefreq' => 'weekly', 'priority' => '0.9'],
+            ['route' => 'site.peer-review', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['route' => 'site.publication', 'changefreq' => 'monthly', 'priority' => '0.8'],
             ['route' => 'site.important-dates', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['route' => 'site.speakers', 'changefreq' => 'monthly', 'priority' => '0.8'],
             ['route' => 'site.committee', 'changefreq' => 'monthly', 'priority' => '0.7'],

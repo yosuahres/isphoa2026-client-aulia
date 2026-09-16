@@ -735,6 +735,49 @@ return [
         'email' => 'isphoa2026@uinmybatusangkar.ac.id',
     ],
     'speakerGroups' => [
+    'peerReview' => [
+        'heading' => 'Workflow of the Reviewing Process',
+        'steps' => [
+            [
+                'text' => 'Authors submit their full paper (4 pages up to a maximum of 6 pages, including references) through the EasyChair ISPhOA 2026 submission page. Before submission, authors should self-scan their manuscript for AI-generated content and plagiarism, and make sure it falls below a threshold of 20% on both.',
+            ],
+            [
+                'text' => 'The ISPhOA 2026 Publication Chair will re-scan the manuscript against both requirements to confirm they are met.',
+            ],
+            [
+                'text' => 'Authors whose submission does not meet both threshold requirements will be contacted to resubmit a revised manuscript.',
+            ],
+            [
+                'text' => 'Manuscripts that pass the scans above are assigned directly to 2 different reviewers with expertise in the paper\'s topic. Review follows a double-blind process.',
+            ],
+            [
+                'text' => 'Submitted papers are reviewed against the paper\'s quality standards, based on the following aspects:',
+                'items' => [
+                    ['mark' => 'a', 'text' => 'Originality'],
+                    ['mark' => 'b', 'text' => 'Novelty'],
+                    ['mark' => 'c', 'text' => 'Soundness (covering methodological validity, reproducibility, technical soundness, and scientific rigour)'],
+                    ['mark' => 'd', 'text' => 'Writing quality (correct English grammar, and the use of recent references)'],
+                ],
+            ],
+            [
+                'text' => 'Each aspect carries a set weight, and the review results are scored. Acceptance is decided by the total score given by the double-blind reviewers, against the quality threshold. Four outcomes are set:',
+                'items' => [
+                    ['mark' => 'A', 'text' => 'Accepted without revisions'],
+                    ['mark' => 'B', 'text' => 'Accepted with MINOR revisions'],
+                    ['mark' => 'C', 'text' => 'Accepted with MAJOR revisions'],
+                    ['mark' => 'D', 'text' => 'Rejected'],
+                ],
+            ],
+            [
+                'text' => 'Authors will be notified of their outcome, with the following recommendations:',
+                'items' => [
+                    ['mark' => 'A', 'text' => 'Register for early bird, at the discounted registration fee. Authors are urged to format their accepted manuscript to strictly follow the template for publication in the SPIE Proceedings.'],
+                    ['mark' => 'B', 'text' => 'Register for early bird, at the discounted registration fee, while making minor revisions based on the reviewers\' comments. Authors are also urged to format their accepted manuscript to strictly follow the template for publication in the SPIE Proceedings.'],
+                    ['mark' => 'C', 'text' => 'Authors are required to make MAJOR revisions based on the reviewers\' comments, within the time frame given by the organizer, and resubmit their revised manuscript through their EasyChair account. A second round of blind review will be assigned to make sure the revised paper meets the quality standard. If the second round is positive, authors will be urged to register; otherwise they will be notified of the rejection.'],
+                ],
+            ],
+        ],
+    ],
         [
             'heading' => 'Plenary Speaker',
             'people' => [
@@ -750,6 +793,14 @@ return [
                         'Since 2025, he has been appointed as Minister of Higher Education, Science, and Technology. Previously he served as the Vice Rector of Research and Innovation, as the Dean of the Faculty of Industrial Technology, and as the Head of the Engineering Physics Department of the Bandung Institute of Technology.',
                     ],
                 ],
+    'publishing' => [
+        'heading' => 'Paper Publishing Process',
+        'steps' => [
+            'Only ACCEPTED and PRESENTED papers will be eligible for publication in the SPIE Proceedings.',
+            'The organizer of ISPhOA 2026 has signed a mutual contract with SPIE to publish ACCEPTED and PRESENTED papers that pass the quality standards in the SPIE Proceedings.',
+            'Authors who have presented their papers at the ISPhOA 2026 seminar will be notified to submit their camera-ready manuscripts through the SPIE Submission System. Access to the SPIE Submission System will be given after the seminar ends.',
+        ],
+    ],
             ],
         ],
         [
@@ -1054,26 +1105,12 @@ return [
             'lead' => 'Submitted papers should be formatted according to the following template:',
         ],
         'method' => [
-            'heading' => 'Submission Methods',
-            'intro' => 'Full papers can be submitted via:',
-            'options' => [
-                [
-                    'n' => '1',
-                    'label' => 'Electronic Submission System',
-                    'formats' => '.PDF',
-                    'note' => 'Authors need to log in for submission',
-                    'href' => '/dashboard/submissions/new',
-                ],
-                [
-                    'n' => '2',
-                    'label' => 'Seminar Email Box',
-                    'formats' => '.PDF/.DOC',
-                    'note' => null,
-                    'href' => 'mailto:secretariat@isphoa2026.org',
-                ],
-            ],
-            'paperId' => 'Paper ID will be assigned by the Seminar Secretariat via the seminar email box within 2 working days.',
-            'enquiries' => 'Any inquiries about the seminar, please contact the seminar email box:',
+            'heading' => 'Paper Submission',
+            'intro' => 'For managing the submission and review process, ISPhOA uses the EasyChair conference management system.',
+            'accountUrl' => 'https://easychair.org/docs/account_create',
+            // The ISPhOA 2026 submission page on EasyChair. Until it is set,
+            // step 4 names the link without making it one.
+            'submitUrl' => null,
         ],
         'policies' => [
             'heading' => 'Review & Publication Policies',

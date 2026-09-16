@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::name('site.')->group(function () {
     Route::view('/', 'site.home')->name('home');
     Route::view('/committee', 'site.committee')->name('committee');
-    Route::view('/venue', 'site.venue')->name('venue');
     Route::view('/important-dates', 'site.important-dates')->name('important-dates');
     Route::view('/speakers', 'site.speakers')->name('speakers');
     Route::view('/call-for-papers', 'site.call-for-papers')->name('call-for-papers');
     Route::view('/submission', 'site.submission')->name('submission');
+    Route::view('/peer-review', 'site.peer-review')->name('peer-review');
+    Route::view('/publication', 'site.publication')->name('publication');
 });
 
 /*
