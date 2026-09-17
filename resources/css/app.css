@@ -258,7 +258,7 @@
     }
 
     .dot-field {
-        opacity: 0.55;
+        opacity: 0.38;
         /* Standing on the foot of the panel, so its own bottom edge is flush
            with the panel's and only the top and the flanks need taking out. */
         -webkit-mask-image:
@@ -290,10 +290,9 @@
     /* Fill mode: the plate is cropped to the whole panel, so every side of it
        is a cut and every side has to go. */
     .dot-field-fill {
-        /* 0.40 keeps every point at 5:1 or better against white, which is what
-           the topic list is set in, so the plate can carry more of the panel
-           than the inner-page treatment does. */
-        opacity: 0.4;
+        /* Kept well down so the plate stays a texture under the topic list,
+           which is set in white, rather than a picture competing with it. */
+        opacity: 0.28;
         -webkit-mask-image: var(--dot-fade-y), var(--dot-fade-x);
         mask-image: var(--dot-fade-y), var(--dot-fade-x);
     }
@@ -304,19 +303,18 @@
        is no seam, where none reaches there is navy, and neither flank of the
        panel shows a cut. */
     .dot-field-tile {
-        opacity: 0.55;
+        opacity: 0.38;
         -webkit-mask-image: var(--dot-fade-y), var(--dot-fade-x);
         mask-image: var(--dot-fade-y), var(--dot-fade-x);
     }
 
     /* For the inner pages, whose copy runs the whole height of the panel
-       rather than clearing its foot the way the speaker wall does. 0.24 is the
-       ceiling: above it the brightest points in the plates take the muted body
-       colour (--site-subtle) below 4.5:1, and body text on these pages does sit
-       over the artwork. The wall itself can afford 0.55 because only headings
-       and photo cards cross it, and those are held to 3:1. */
+       rather than clearing its foot the way the speaker wall does. Body text
+       sits over the artwork here, so the plate is kept faint -- a texture in
+       the navy, not a picture. The wall can take more because only headings
+       and photo cards cross it. */
     .dot-field-soft {
-        opacity: 0.24;
+        opacity: 0.15;
     }
 }
 
