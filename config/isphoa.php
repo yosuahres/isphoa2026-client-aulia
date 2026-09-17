@@ -313,80 +313,44 @@ return [
         'startsAt' => '2026-12-02T08:00:00+07:00',
         'endsAt' => '2026-12-03T17:00:00+07:00',
     ],
+    // Registration fees. Presenter rates are the early-bird rates; the
+    // participant / listener rates are flat.
     'fees' => [
         [
-            'category' => 'International Presenter',
-            'earlyBird' => 'USD 175',
-            'regular' => 'USD 220',
-            'popular' => false,
-            'items' => [
-                'Oral / Poster Slot',
-                'Full 2-day Access',
-                'Seminar Kit',
-                'Print Proceedings',
-                'Certificate',
+            'id' => 'presenter',
+            'heading' => 'Presenter',
+            'earlyBird' => true,
+            'groups' => [
+                [
+                    'label' => 'Domestic Presenter',
+                    'rows' => [
+                        ['category' => 'Academic / Professionals', 'online' => 'IDR 3,000,000', 'offline' => 'IDR 4,000,000'],
+                        ['category' => 'Student', 'online' => 'IDR 2,500,000', 'offline' => 'IDR 3,500,000'],
+                        ['category' => 'Additional Abstract', 'online' => 'IDR 2,500,000', 'offline' => 'IDR 2,500,000'],
+                    ],
+                ],
+                [
+                    'label' => 'International Presenter',
+                    'rows' => [
+                        ['category' => 'Academic / Professionals', 'online' => 'USD 200', 'offline' => 'USD 250'],
+                        ['category' => 'Student', 'online' => 'USD 180', 'offline' => 'USD 220'],
+                        ['category' => 'Additional Abstract', 'online' => 'USD 180', 'offline' => 'USD 180'],
+                    ],
+                ],
             ],
         ],
         [
-            'category' => 'International Participant',
-            'earlyBird' => 'USD 240',
-            'regular' => 'USD 300',
-            'popular' => true,
-            'items' => [
-                'Full 2-day Access',
-                'Seminar Kit',
-                'Proceedings',
-                'Networking Dinner',
-                'Cultural Tour',
-            ],
-        ],
-        [
-            'category' => 'National Presenter',
-            'earlyBird' => 'IDR 1,400,000',
-            'regular' => 'IDR 1,750,000',
-            'popular' => false,
-            'items' => [
-                'Oral / Poster Slot',
-                'Full Access',
-                'Proceedings',
-                'Certificate',
-                'DOI Assignment',
-            ],
-        ],
-        [
-            'category' => 'National Participant',
-            'earlyBird' => 'IDR 800,000',
-            'regular' => 'IDR 1,000,000',
-            'popular' => false,
-            'items' => [
-                'Full 2-day Access',
-                'Seminar Kit',
-                'Proceedings',
-                'Certificate',
-            ],
-        ],
-        [
-            'category' => 'Student (National)',
-            'earlyBird' => 'IDR 500,000',
-            'regular' => 'IDR 650,000',
-            'popular' => false,
-            'items' => [
-                'Full 2-day Access',
-                'Proceedings',
-                'Student Certificate',
-            ],
-        ],
-        [
-            'category' => 'Online Participant',
-            'earlyBird' => 'USD 60',
-            'regular' => 'USD 80',
-            'popular' => false,
-            'items' => [
-                'Live-stream Access',
-                'E-Proceedings',
-                'E-Certificate',
-                'Virtual Q&A',
-                'Recorded Sessions',
+            'id' => 'participant',
+            'heading' => 'Participant / Listener',
+            'earlyBird' => false,
+            'groups' => [
+                [
+                    'label' => null,
+                    'rows' => [
+                        ['category' => 'Domestic Participant', 'online' => 'IDR 200,000', 'offline' => 'IDR 500,000'],
+                        ['category' => 'International Participant', 'online' => 'USD 20', 'offline' => 'USD 50'],
+                    ],
+                ],
             ],
         ],
     ],
@@ -401,7 +365,7 @@ return [
                 ],
                 [
                     'label' => 'Registration Fee',
-                    'href' => null,
+                    'href' => '/registration#fees',
                 ],
                 [
                     'label' => 'Call for Papers',
