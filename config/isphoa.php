@@ -573,17 +573,21 @@ return [
         [
             'heading' => 'Submission',
             'dates' => [
+                // Both extended per the "Paper Submission Deadline Extended"
+                // announcement; 'extended' marks them as such in the table.
                 [
                     'n' => '01',
                     'label' => 'Full-paper Submission (max 6 pages) for Review',
-                    'iso' => '2026-09-15T23:59:59+07:00',
-                    'display' => '15 Sep 2026',
+                    'iso' => '2026-10-15T23:59:59+07:00',
+                    'display' => '15 Oct 2026',
+                    'extended' => true,
                 ],
                 [
                     'n' => '02',
                     'label' => 'Notification of Acceptance',
-                    'iso' => '2026-10-15T00:00:00+07:00',
-                    'display' => '15 Oct 2026',
+                    'iso' => '2026-11-10T00:00:00+07:00',
+                    'display' => '10 Nov 2026',
+                    'extended' => true,
                 ],
                 [
                     'n' => '04',
@@ -599,8 +603,14 @@ return [
                 [
                     'n' => '03',
                     'label' => 'Early-bird Registration',
-                    'iso' => '2026-11-01T23:59:59+07:00',
-                    'display' => '01 Nov 2026',
+                    'iso' => '2026-11-20T23:59:59+07:00',
+                    'display' => '10–20 Nov 2026',
+                ],
+                [
+                    'n' => '03',
+                    'label' => 'Normal Registration',
+                    'iso' => '2026-11-21T00:00:00+07:00',
+                    'display' => '21 Nov 2026',
                 ],
                 [
                     'n' => '05',
@@ -1153,7 +1163,7 @@ return [
     ],
     'submissionWindow' => [
         'opensAt' => '2026-06-01T00:00:00+07:00',
-        'closesAt' => '2026-09-15T23:59:59+07:00',
+        'closesAt' => '2026-10-15T23:59:59+07:00',
         'opensDisplay' => '01 Jun 2026',
     ],
     'supporters' => [
