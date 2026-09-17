@@ -142,22 +142,22 @@
                                 <x-site.icon name="caret" class="size-3.5 transition-transform group-hover:translate-y-0.5" />
                             </button>
 
-                            {{-- Anchored from the right: the nav sits against the
-                                 window's right gutter, so a panel hung off the
-                                 left of the last trigger runs off the screen.
-                                 top-full is the bar's real bottom edge, 80px down,
+                            {{-- Anchored from the left, under its own trigger. If a
+                                 dropdown ever becomes the last nav item again,
+                                 anchor it from the right instead, or the panel
+                                 runs off the screen. top-full is the bar's real bottom edge, 80px down,
                                  but the frost fades out from 44px so the bar
                                  reads as ending well above that -- hence the
                                  pull up, or the panel looks adrift. pt-2 rather
                                  than a margin for the daylight: padding is part
                                  of the hover target, so the pointer can cross it
                                  without the menu closing. --}}
-                            <div class="invisible absolute -right-6 top-full z-50 -mt-5 pt-2 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                            <div class="invisible absolute -left-3 top-full z-50 -mt-5 pt-2 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                                 {{-- Only hover paints a fill. The current page is marked
                                      by an orange dot and dark type instead, so it never
                                      stands as a second pill beside the hovered one; the
                                      1px of daylight keeps two neighbours' edges apart. --}}
-                                <ul class="site-dropdown surface-light grid min-w-[260px] gap-px rounded-2xl p-2 shadow-2xl">
+                                <ul class="site-dropdown surface-light grid min-w-[180px] gap-px rounded-xl p-1.5 shadow-xl">
                                     @foreach ($item['children'] as $child)
                                         @php $current = $matches($child['href']); @endphp
                                         <li>
@@ -165,7 +165,7 @@
                                                 href="{{ $child['href'] }}"
                                                 @if ($current) aria-current="page" @endif
                                                 @class([
-                                                    'flex cursor-pointer items-center gap-2.5 whitespace-nowrap rounded-xl px-4 py-2.5 text-left text-[0.95rem] transition-colors hover:bg-ink/[0.06] hover:text-ink',
+                                                    'flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-lg px-3 py-1.5 text-left text-[0.875rem] transition-colors hover:bg-ink/[0.06] hover:text-ink',
                                                     'font-semibold text-ink' => $current,
                                                     'text-subtle' => ! $current,
                                                 ])

@@ -649,27 +649,6 @@ return [
             'href' => '/',
         ],
         [
-            'label' => 'Committee',
-            'children' => [
-                [
-                    'label' => 'Patronage',
-                    'href' => '/committee/patronage',
-                ],
-                [
-                    'label' => 'Advisory Board',
-                    'href' => '/committee/advisory-board',
-                ],
-                [
-                    'label' => 'Technical Program Committee',
-                    'href' => '/committee/technical-program',
-                ],
-                [
-                    'label' => 'Organizing Committee',
-                    'href' => '/committee/organizing',
-                ],
-            ],
-        ],
-        [
             'label' => 'Conference',
             'children' => [
                 [
@@ -691,25 +670,20 @@ return [
             ],
         ],
         [
-            'label' => 'For Authors',
-            'children' => [
-                [
-                    'label' => 'Paper Submission',
-                    'href' => '/submission',
-                ],
-                [
-                    'label' => 'Peer Review Process',
-                    'href' => '/peer-review',
-                ],
-                [
-                    'label' => 'SPIE Publication',
-                    'href' => '/publication',
-                ],
-            ],
+            'label' => 'Committee',
+            'href' => '/committee',
+        ],
+        [
+            'label' => 'Submission',
+            'href' => '/submission',
         ],
         [
             'label' => 'Registration',
             'href' => '/registration',
+        ],
+        [
+            'label' => 'Contact',
+            'href' => '/contact',
         ],
     ],
     'organizers' => [
@@ -1137,9 +1111,9 @@ return [
             'heading' => 'Paper Submission',
             'intro' => 'For managing the submission and review process, ISPhOA uses the EasyChair conference management system.',
             'accountUrl' => 'https://easychair.org/docs/account_create',
-            // The ISPhOA 2026 submission page on EasyChair. Until it is set,
-            // step 4 names the link without making it one.
-            'submitUrl' => null,
+            // The ISPhOA 2026 submission page on EasyChair. When null, step 4
+            // names the link without making it one.
+            'submitUrl' => 'https://easychair.org/conferences/?conf=isphoa2026',
         ],
         'policies' => [
             'heading' => 'Review & Publication Policies',

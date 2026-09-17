@@ -97,15 +97,11 @@ class Seo
             ['route' => 'site.home', 'changefreq' => 'weekly', 'priority' => '1.0'],
             ['route' => 'site.call-for-papers', 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['route' => 'site.submission', 'changefreq' => 'weekly', 'priority' => '0.9'],
-            ['route' => 'site.peer-review', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['route' => 'site.publication', 'changefreq' => 'monthly', 'priority' => '0.8'],
             ['route' => 'site.important-dates', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['route' => 'site.speakers', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['route' => 'site.committee.patronage', 'changefreq' => 'monthly', 'priority' => '0.7'],
-            ['route' => 'site.committee.advisory-board', 'changefreq' => 'monthly', 'priority' => '0.7'],
-            ['route' => 'site.committee.technical-program', 'changefreq' => 'monthly', 'priority' => '0.7'],
-            ['route' => 'site.committee.organizing', 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['route' => 'site.committee', 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['route' => 'site.venue', 'changefreq' => 'monthly', 'priority' => '0.6'],
+            ['route' => 'site.contact', 'changefreq' => 'yearly', 'priority' => '0.5'],
         ];
     }
 }

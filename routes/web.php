@@ -15,21 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('site.')->group(function () {
     Route::view('/', 'site.home')->name('home');
-    // One page per body. /committee was a single page before the split, so
-    // it forwards to the first of them rather than breaking indexed links.
-    Route::redirect('/committee', '/committee/patronage', 301);
-    Route::view('/committee/patronage', 'site.committee', ['section' => 'patronage'])->name('committee.patronage');
-    Route::view('/committee/advisory-board', 'site.committee', ['section' => 'advisory-board'])->name('committee.advisory-board');
-    Route::view('/committee/technical-program', 'site.committee', ['section' => 'technical-program'])->name('committee.technical-program');
-    Route::view('/committee/organizing', 'site.committee', ['section' => 'organizing'])->name('committee.organizing');
+    Route::view('/committee', 'site.committee')->name('committee');
+    // The committee was briefly split into one page per body. Those URLs now
+    // land on the matching section of the single page.
+    foreach (['patronage', 'advisory-board', 'technical-program', 'organizing'] as $body) {
+        Route::redirect("/committee/{$body}", "/committee#{$body}", 301);
+    }
     Route::view('/venue', 'site.venue')->name('venue');
     Route::view('/important-dates', 'site.important-dates')->name('important-dates');
     Route::view('/speakers', 'site.speakers')->name('speakers');
     Route::view('/call-for-papers', 'site.call-for-papers')->name('call-for-papers');
     Route::view('/submission', 'site.submission')->name('submission');
-    Route::view('/peer-review', 'site.peer-review')->name('peer-review');
-    Route::view('/publication', 'site.publication')->name('publication');
+    // Peer review and publication used to be pages of their own; they are
+    // sections of /submission now.
+    Route::redirect('/peer-review', '/submission#peer-review', 301);
+    Route::redirect('/publication', '/submission#publication', 301);
     Route::view('/registration', 'site.registration')->name('registration');
+    Route::view('/contact', 'site.contact')->name('contact');
 });
 
 /*

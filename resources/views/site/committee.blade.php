@@ -2,56 +2,67 @@
     $event = config('isphoa.event');
     $committee = config('isphoa.committee');
 
-    // Which body this page shows; the routes pass it. The two boards share one
-    // shape in the config and are told apart by their place in it.
-    $section ??= 'patronage';
+    [$patronage, $boards, $organizing, $workingGroups] = [
+        $committee['patronage'],
+        $committee['boards'],
+        $committee['organizing'],
+        $committee['workingGroups'],
+    ];
 
-    $board = match ($section) {
-        'advisory-board' => $committee['boards'][0],
-        'technical-program' => $committee['boards'][1],
-        default => null,
-    };
+    // Anchors for each body. The old /committee/<slug> pages redirect here and
+    // land on these, so they have to keep matching those slugs.
+    $boardIds = ['advisory-board', 'technical-program'];
 
-    $heading = match ($section) {
-        'organizing' => $committee['organizing']['heading'],
-        'patronage' => $committee['patronage']['heading'],
-        default => $board['heading'],
-    };
-
-    // From md up the accent rule is hung in the container's left padding, so
-    // the heading starts on the same left edge as the lists beneath it rather
-    // than being pushed in by the width of its own marker. Below md it stays
-    // inline: Container drops to px-6, and 24px is not enough room to park a
-    // rule in without it running off the side of the screen.
-    $hang = 'md:absolute md:right-full md:top-1/2 md:mr-2.5 md:-translate-y-1/2';
+    // The committee headings sit on a square-cornered label, all one width so
+    // their edges line up down the page, rather than beside an
+    // accent bar. The working groups take a dimmer one so they still read as
+    // sitting under the organizing committee, not alongside it.
+    $h2 = 'block w-full max-w-[42rem] bg-beam px-3.5 py-1 font-display text-[1.75rem] font-semibold tracking-[-0.02em] text-white';
+    $section = 'scroll-mt-20 xl:scroll-mt-36';
 @endphp
 
-@section('title', $heading)
-@section('description', "{$heading} of {$event['shortName']} {$event['edition']}, the {$event['fullName']}.")
+@section('title', 'Committee')
+@section('description', "Patronage, advisory board, technical program committee and organizing committee of {$event['shortName']} {$event['edition']}.")
 
-<x-layouts.site>
+<x-layouts.site :scroll-to-hash="true">
     <div class="field-navy relative flex-1 overflow-clip">
-        {{-- This page's plate, dimmed. Each inner page draws a different optical
-             figure, so no two of them read as the same picture. The organizing
-             committee carries the working groups too and runs long enough to
-             take 2 copies; the other bodies fit under one. --}}
-        <x-site.dot-field plate="rings" :soft="true" :repeat="$section === 'organizing' ? 2 : 1" />
+        {{-- This page's plate, dimmed. All four bodies and the working groups
+             run long, so the figure takes the full 3 copies. --}}
+        <x-site.dot-field plate="rings" :soft="true" :repeat="3" />
 
         <x-site.container wide class="relative z-10 pb-12 pt-12 md:pb-16 md:pt-16">
-            <x-site.page-header class="mb-10 md:mb-14">{{ $heading }}</x-site.page-header>
+            <x-site.page-header class="mb-10 md:mb-14">Committee</x-site.page-header>
 
-            @if ($section === 'patronage')
-                @include('site.partials.people', ['names' => $committee['patronage']['entries']])
-            @elseif ($board)
-                <dl class="grid gap-y-1.5 text-[1.15rem] leading-[1.75] sm:grid-cols-[auto_1fr] sm:gap-x-6">
-                    <dt class="font-semibold">Chair</dt>
-                    <dd class="text-ink">{{ $board['chair'] }}</dd>
-                </dl>
-                <h2 class="mt-4 text-[1.15rem] font-semibold leading-[1.75]">Members</h2>
-                @include('site.partials.people', ['names' => $board['members']])
-            @else
-                <dl class="grid gap-y-1.5 text-[1.15rem] leading-[1.75] sm:grid-cols-[auto_1fr] sm:gap-x-6">
-                    @foreach ($committee['organizing']['roles'] as $entry)
+            {{-- Patronage --}}
+            <section id="patronage" class="{{ $section }}">
+                <h2 class="{{ $h2 }}">
+                    {{ $patronage['heading'] }}
+                </h2>
+                @include('site.partials.people', ['names' => $patronage['entries']])
+            </section>
+
+            {{-- Advisory and technical program committees --}}
+            @foreach ($boards as $i => $board)
+                <section id="{{ $boardIds[$i] }}" class="mt-12 {{ $section }}">
+                    <h2 class="{{ $h2 }}">
+                            {{ $board['heading'] }}
+                    </h2>
+                    <dl class="mt-3 grid gap-y-1.5 text-[1.15rem] leading-[1.75] sm:grid-cols-[auto_1fr] sm:gap-x-6">
+                        <dt class="font-semibold">Chair</dt>
+                        <dd class="text-ink">{{ $board['chair'] }}</dd>
+                    </dl>
+                    <h3 class="mt-4 text-[1.15rem] font-semibold leading-[1.75]">Members</h3>
+                    @include('site.partials.people', ['names' => $board['members']])
+                </section>
+            @endforeach
+
+            {{-- Organizing committee --}}
+            <section id="organizing" class="mt-12 {{ $section }}">
+                <h2 class="{{ $h2 }}">
+                    {{ $organizing['heading'] }}
+                </h2>
+                <dl class="mt-3 grid gap-y-1.5 text-[1.15rem] leading-[1.75] sm:grid-cols-[auto_1fr] sm:gap-x-6">
+                    @foreach ($organizing['roles'] as $entry)
                         <dt class="font-semibold">{{ $entry['role'] }}</dt>
                         <dd class="text-ink">{{ $entry['name'] }}</dd>
                     @endforeach
@@ -62,12 +73,11 @@
                      and the page is a reference rather than something anyone
                      reads through. --}}
                 <div class="mt-9 grid gap-y-7">
-                    @foreach ($committee['workingGroups'] as $group)
+                    @foreach ($workingGroups as $group)
                         <section>
-                            <h2 class="relative flex items-center gap-3 font-display text-[1.45rem] font-semibold tracking-[-0.02em]">
-                                <span aria-hidden="true" class="h-[5px] w-[0.9rem] shrink-0 bg-beam/55 {{ $hang }}"></span>
+                            <h3 class="block w-full max-w-[42rem] bg-beam/20 px-3.5 py-0.5 font-display text-[1.45rem] font-semibold tracking-[-0.02em] text-ink">
                                 {{ $group['heading'] }}
-                            </h2>
+                            </h3>
                             @if (! empty($group['chair']))
                                 <dl class="mt-2 grid gap-y-1.5 text-[1.15rem] leading-[1.75] sm:grid-cols-[auto_1fr] sm:gap-x-6">
                                     <dt class="font-semibold">Chair</dt>
@@ -78,7 +88,7 @@
                         </section>
                     @endforeach
                 </div>
-            @endif
+            </section>
         </x-site.container>
     </div>
 </x-layouts.site>
