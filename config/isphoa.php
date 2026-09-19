@@ -361,7 +361,7 @@ return [
             'links' => [
                 [
                     'label' => 'How to Register',
-                    'href' => null,
+                    'href' => '/registration#procedure',
                 ],
                 [
                     'label' => 'Registration Fee',
@@ -370,18 +370,6 @@ return [
                 [
                     'label' => 'Call for Papers',
                     'href' => '/call-for-papers',
-                ],
-                [
-                    'label' => 'Terms of Service',
-                    'href' => null,
-                ],
-                [
-                    'label' => 'Privacy Policy',
-                    'href' => null,
-                ],
-                [
-                    'label' => 'Refund Policy',
-                    'href' => null,
                 ],
             ],
         ],
@@ -691,6 +679,16 @@ return [
             'logo' => '/brand/its.png',
         ],
     ],
+    // Where the registration fee is paid. Shown under the fee tables.
+    'paymentMethod' => [
+        'heading' => 'Wire Transfer',
+        'rows' => [
+            ['label' => 'Account Number', 'value' => '2104174953'],
+            ['label' => 'Account Name', 'value' => 'Fitri Rahmah'],
+            ['label' => 'Bank Name', 'value' => 'BNI'],
+            ['label' => 'Bank Country', 'value' => 'Indonesia'],
+        ],
+    ],
     'paymentNote' => 'Payments are processed by Midtrans. Bank transfer, virtual account, QRIS, e-wallet and credit card are all supported. Your registration is confirmed automatically once the payment clears, and a receipt is emailed to you.',
     'peerReview' => [
         'heading' => 'Workflow of the Reviewing Process',
@@ -759,6 +757,17 @@ return [
         ],
     ],
     'registrationNote' => 'All registrations include full seminar access, proceedings, and certificate of participation.',
+    // The form the registration procedure sends people to. The steps
+    // themselves are written out in the view, since one of them wraps a link.
+    'registrationProcedure' => [
+        'formUrl' => 'https://docs.google.com/forms/d/e/1FAIpQLSe7Dx261BSufBunHtU63OPAF4_Y5ONujpcVbCf1O4ZlW37iwQ/viewform',
+    ],
+    // Terms shown under the payment details on the registration page.
+    'registrationTerms' => [
+        'All payments made are final and cannot be refunded.',
+        'Payments must be completed via bank transfer.',
+        'Seminar kits are provided only for participants who present their papers onsite (offline).',
+    ],
     'secretariat' => [
         'heading' => 'Local Organizer',
         'lines' => [

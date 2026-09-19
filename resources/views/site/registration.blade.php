@@ -1,6 +1,11 @@
 @php
     $event = config('isphoa.event');
     $fees = config('isphoa.fees');
+    $procedure = config('isphoa.registrationProcedure');
+    $payment = config('isphoa.paymentMethod');
+    $terms = config('isphoa.registrationTerms');
+
+    $linkClass = 'font-medium text-beam underline decoration-beam/30 underline-offset-4 transition-colors hover:decoration-beam';
 
     // The early-bird window, from the Registration group on the dates page.
     $earlyBird = collect(config('isphoa.keyDateGroups'))
@@ -9,7 +14,7 @@
 @endphp
 
 @section('title', 'Registration')
-@section('description', "Registration fees for {$event['shortName']} {$event['edition']}, {$event['dates']}, {$event['venue']}: early-bird presenter rates and participant / listener rates, online and offline.")
+@section('description', "How to register for {$event['shortName']} {$event['edition']}, {$event['dates']}, {$event['venue']}: the registration procedure, early-bird presenter rates and participant / listener rates, online and offline.")
 
 <x-layouts.site :scroll-to-hash="true">
     <div class="field-navy relative flex-1 overflow-clip">
@@ -18,7 +23,20 @@
         <x-site.container wide class="relative z-10 pb-12 pt-12 md:pb-16 md:pt-16">
             <x-site.page-header class="mb-10 md:mb-14">Registration</x-site.page-header>
 
-            <section id="fees" class="scroll-mt-20 xl:scroll-mt-36">
+            <section id="procedure" class="scroll-mt-20 xl:scroll-mt-36">
+                <x-site.label>Registration Procedure</x-site.label>
+
+                <ol class="mt-4 grid list-decimal gap-y-4 pl-6 text-[1.15rem] leading-[1.75] text-ink marker:font-semibold marker:text-subtle">
+                    <li class="pl-1">Please complete the payment fee according to the method you choose.</li>
+                    <li class="pl-1">
+                        Please complete the conference registration using the following link:
+                        <a href="{{ $procedure['formUrl'] }}" target="_blank" rel="noopener noreferrer" class="{{ $linkClass }} break-all">{{ $procedure['formUrl'] }}<span class="sr-only"> (opens in a new tab)</span></a>
+                    </li>
+                    <li class="pl-1">Before submitting the form, please ensure that all required information is included and all supporting documents (payment proof/slip) are attached. This will enable us to process your registration promptly and ensure a smooth conference experience for you.</li>
+                </ol>
+            </section>
+
+            <section id="fees" class="mt-14 border-t border-line pt-14 scroll-mt-20 md:mt-16 md:pt-16 xl:scroll-mt-36">
                 <x-site.label>Registration Fee</x-site.label>
 
                 <div class="mt-8 grid gap-8">
@@ -73,11 +91,39 @@
                         </x-site.card>
                     @endforeach
                 </div>
+            </section>
 
-                <p class="mx-auto mt-8 flex w-fit items-center gap-2 border border-flare/40 bg-flare/10 px-5 py-2 text-[0.85rem] font-semibold uppercase tracking-[0.08em] text-flare">
-                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="size-4"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-8-5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 10 5Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>
-                    Payment made is non-refundable
-                </p>
+            <section id="payment" class="mt-14 border-t border-line pt-14 scroll-mt-20 md:mt-16 md:pt-16 xl:scroll-mt-36">
+                <x-site.label>Payment Method</x-site.label>
+
+                {{-- Set apart as a quote, and set large: this is what
+                     people come to the page to read off and copy. --}}
+                <blockquote class="mt-6">
+                    <span aria-hidden="true" class="block font-display text-[2.75rem] font-semibold italic leading-[0.6] text-ink">&ldquo;</span>
+
+                    <h3 class="mt-4 text-[1.6rem] font-semibold leading-[1.6] text-ink md:text-[1.75rem]">{{ $payment['heading'] }}:</h3>
+
+                    <dl class="mt-3 text-[1.6rem] leading-[1.6] text-ink md:text-[1.75rem]">
+                        @foreach ($payment['rows'] as $row)
+                            <div class="flex flex-wrap gap-x-1.5">
+                                <dt>{{ $row['label'] }}:</dt>
+                                <dd class="font-semibold tabular-nums">{{ $row['value'] }}</dd>
+                            </div>
+                        @endforeach
+                    </dl>
+
+                    <span aria-hidden="true" class="mt-5 block font-display text-[2.75rem] font-semibold italic leading-[0.6] text-ink">&rdquo;</span>
+                </blockquote>
+            </section>
+
+            <section id="terms" class="mt-14 border-t border-line pt-14 scroll-mt-20 md:mt-16 md:pt-16 xl:scroll-mt-36">
+                <x-site.label>Terms and Conditions</x-site.label>
+
+                <ol class="mt-4 grid list-decimal gap-y-1.5 pl-6 text-[1.15rem] leading-[1.75] text-ink marker:font-semibold marker:text-subtle">
+                    @foreach ($terms as $term)
+                        <li class="pl-1">{{ $term }}</li>
+                    @endforeach
+                </ol>
             </section>
         </x-site.container>
     </div>
