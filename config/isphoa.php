@@ -637,9 +637,18 @@ return [
                     'label' => 'Call for Papers',
                     'href' => '/call-for-papers',
                 ],
+            ],
+        ],
+        [
+            'label' => 'Venue',
+            'children' => [
                 [
-                    'label' => 'Venue',
+                    'label' => 'Conference Venue',
                     'href' => '/venue',
+                ],
+                [
+                    'label' => 'Travel Information',
+                    'href' => '/travel-information',
                 ],
             ],
         ],
@@ -1232,5 +1241,281 @@ return [
             'lng' => 100.5355763,
         ],
         'placeId' => 'ChIJ-1M6EwAt1S8R0cR80CrsL0E',
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Travel Information
+    |--------------------------------------------------------------------------
+    |
+    | The second Venue tab: what there is to see around Batusangkar and across
+    | West Sumatra for participants who can stay a little longer. Each entry
+    | leads with its photographs: one sheet per destination, several views laid
+    | out side by side, set across the full width of the page.
+    |
+    */
+    'travel' => [
+        'heading' => 'Beyond the Seminar: Discover Batusangkar and the Wonders of West Sumatra',
+        'standfirst' => 'An invitation to explore Minangkabau culture, remarkable landscapes, and memorable local experiences during your visit to ISPhOA 2026.',
+        'intro' => [
+            'Every journey begins with a purpose, but its most lasting memories often come from unexpected encounters along the way. Beyond the presentations and scientific discussions, take a moment to follow a village path, savour local flavours, and hear the stories of the people who call this region home. Let curiosity guide you beyond the seminar hall and into the heart of West Sumatra.',
+            'Attending ISPhOA 2026 in Batusangkar on 2–3 December 2026 offers an opportunity to combine scientific exchange with a journey through West Sumatra. Between traditional villages, distinctive architecture, scenic lakes, and dramatic valleys, there is much to discover beyond the seminar venue.',
+            'For international visitors, Batusangkar is a rewarding starting point for exploring Minangkabau heritage. A short excursion can introduce you to an impressive palace or a historic village, while a few additional days open up opportunities to visit highland towns, coastal destinations, and a UNESCO World Heritage Site.',
+            'ISPhOA 2026 offers an opportunity to make new scientific connections while discovering a region rich in stories, craftsmanship, and landscapes. Whether you have a few spare hours or several additional days, Batusangkar and West Sumatra invite you to stay a little longer and explore.',
+        ],
+        'note' => 'The following guide presents several beautiful and intriguing destinations and experiences to consider when planning your visit. Suggested visit durations are planning recommendations, rather than confirmed travel times. Check the opening hours, admission fees, road access, and activity schedules closer to your visit.',
+        'destinations' => [
+            [
+                'n' => 1,
+                'slug' => 'istano-basa-pagaruyung',
+                'title' => 'Istano Basa Pagaruyung',
+                'subtitle' => 'An Introduction to Minangkabau Heritage',
+                'photo' => ['src' => 'photos/travel/istano-basa-pagaruyung.jpg', 'w' => 968, 'h' => 181],
+                'alt' => 'Istano Basa Pagaruyung, the reconstructed Minangkabau royal palace near Batusangkar, with its curved rooflines against a green hillside.',
+                'body' => [
+                    'With its soaring, curved rooflines, colourful carvings, and green hillside backdrop, Istano Basa Pagaruyung is one of the most distinctive sights near Batusangkar. Its architecture offers an engaging introduction to the cultural traditions of the Minangkabau people.',
+                    'The present building is a reconstruction of the royal palace. A visit is an opportunity to appreciate traditional architectural forms and learn about the history and customs associated with the former Pagaruyung Kingdom. The palace is approximately five kilometres from Batusangkar.',
+                ],
+                'facts' => [
+                    'Location' => 'Jalan Sutan Alam Bagagarsyah, Nagari Pagaruyung, Tanjung Emas District, Tanah Datar Regency.',
+                    'Things to do' => 'Explore areas open to visitors, admire the carvings and architectural details, learn about Minangkabau customs with a local guide, and take photographs. Traditional costume photography may be available through local providers.',
+                    'Suggested time' => '1–2 hours.',
+                    'Why visit?' => 'An accessible and visually striking introduction to the cultural heritage of the seminar\'s host region.',
+                ],
+            ],
+            [
+                'n' => 2,
+                'slug' => 'nagari-tuo-pariangan',
+                'title' => 'Nagari Tuo Pariangan',
+                'subtitle' => 'Village Life on the Slopes of Mount Marapi',
+                'photo' => ['src' => 'photos/travel/nagari-tuo-pariangan.jpg', 'w' => 968, 'h' => 208],
+                'alt' => 'Nagari Tuo Pariangan on the slopes of Mount Marapi, with rice fields and traditional rumah gadang houses.',
+                'body' => [
+                    'Pariangan invites visitors to slow down and enjoy a landscape of rice fields, traditional houses, village paths, and a historic mosque. Situated on the lower slopes of Mount Marapi, approximately fifteen kilometres from Batusangkar, the village holds an important place in Minangkabau origin traditions.',
+                    'Its appeal lies in the relationship between the landscape and everyday village life. A guided walk can reveal stories and architectural details that might otherwise go unnoticed. Local accounts of the village\'s origins are best understood as part of its living cultural traditions.',
+                ],
+                'facts' => [
+                    'Location' => 'Nagari Pariangan, Pariangan District, Tanah Datar Regency.',
+                    'Things to do' => 'Take a guided village walk, enjoy views of the rice fields, discover traditional rumah gadang houses, visit the area around Ishlah Mosque in accordance with local rules, and meet residents respectfully.',
+                    'Suggested time' => '2–3 hours.',
+                    'Why visit?' => 'A picturesque historic village where architecture, agriculture, and community life can be experienced together.',
+                ],
+            ],
+            [
+                'n' => 3,
+                'slug' => 'batu-batikam',
+                'title' => 'Batu Batikam',
+                'subtitle' => 'A Small Site with a Meaningful Story',
+                'photo' => ['src' => 'photos/travel/batu-batikam.jpg', 'w' => 968, 'h' => 264],
+                'alt' => 'The pierced stone of Batu Batikam and the stone arrangement surrounding it, Lima Kaum.',
+                'body' => [
+                    'Batu Batikam is a modest heritage site whose significance becomes clearer through the stories associated with it. The pierced stone is linked in local legend to Datuak Parpatiah Nan Sabatang and to the importance of peace and deliberation in Minangkabau society.',
+                    'For visitors interested in cultural interpretation, this is a worthwhile short stop. A knowledgeable guide can explain how places, objects, and oral traditions help communities pass on their values.',
+                ],
+                'facts' => [
+                    'Location' => 'Jorong Dusun Tuo, Nagari Limo Kaum, Lima Kaum District, Tanah Datar Regency.',
+                    'Things to do' => 'View the pierced stone and surrounding stone arrangement, listen to local accounts of its significance, and photograph the site.',
+                    'Suggested time' => '30–45 minutes, combined with other nearby attractions.',
+                    'Why visit?' => 'An introduction to the symbolic and storytelling traditions of Minangkabau culture.',
+                ],
+            ],
+            [
+                'n' => 4,
+                'slug' => 'pacu-jawi',
+                'title' => 'Pacu Jawi',
+                'subtitle' => 'A Memorable Agricultural Tradition',
+                'photo' => ['src' => 'photos/travel/pacu-jawi.jpg', 'w' => 968, 'h' => 235],
+                'alt' => 'A Pacu Jawi cattle race through a muddy rice field, with a jockey balancing behind a pair of cattle.',
+                'body' => [
+                    'Few local experiences are as visually dramatic as Pacu Jawi. A pair of cattle runs through a muddy rice field while a jockey balances behind them, creating a scene of movement, skill, and flying mud.',
+                    'Associated with the period after the rice harvest, Pacu Jawi is an agricultural tradition that has also attracted international photographers. Events rotate between villages, particularly in Pariangan, Rambatan, Lima Kaum, and Sungai Tarab districts.',
+                ],
+                'facts' => [
+                    'Location' => 'Host villages and rice fields in Tanah Datar Regency. The exact location depends on the local event schedule.',
+                    'Things to do' => 'Watch from designated spectator areas, photograph the action, and learn about the tradition with a local guide.',
+                    'Suggested time' => 'Allow half a day if an event coincides with your visit.',
+                    'Why visit?' => 'A distinctive cultural experience that connects visitors with the region\'s agricultural heritage.',
+                ],
+            ],
+            [
+                'n' => 5,
+                'slug' => 'lake-singkarak',
+                'title' => 'Lake Singkarak',
+                'subtitle' => 'A Relaxing Lakeside Escape',
+                'photo' => ['src' => 'photos/travel/lake-singkarak.jpg', 'w' => 968, 'h' => 179],
+                'alt' => 'Lake Singkarak seen from its shore, with hills rising behind the water.',
+                'body' => [
+                    'Surrounded by hills, Lake Singkarak offers a peaceful setting for a break from a busy seminar programme. Its broad views are well suited to a leisurely meal, photography, or conversation with fellow participants.',
+                    'The lake extends across Tanah Datar and Solok regencies. Selecting a specific lakeside stop is therefore important when planning an efficient excursion from Batusangkar.',
+                ],
+                'facts' => [
+                    'Location' => 'Lake Singkarak, spanning Tanah Datar and Solok regencies. Possible approaches from Batusangkar include the Ombilin–Rambatan area and lakeside locations in Batipuh Selatan.',
+                    'Things to do' => 'Enjoy the views, take photographs, have a lakeside meal, and sample local preparations of bilih fish where available.',
+                    'Suggested time' => '1–2 hours, potentially included in a half-day excursion.',
+                    'Why visit?' => 'A gentle, scenic outing that provides time to relax and enjoy the landscape.',
+                ],
+            ],
+            [
+                'n' => 6,
+                'slug' => 'pandai-sikek',
+                'title' => 'Pandai Sikek',
+                'subtitle' => 'Discover the Craft of Songket Weaving',
+                'photo' => ['src' => 'photos/travel/pandai-sikek.jpg', 'w' => 968, 'h' => 202],
+                'alt' => 'A weaver at a traditional loom in a songket weaving house in Pandai Sikek.',
+                'body' => [
+                    'A visit to Pandai Sikek reveals the patience and skill behind traditional Minangkabau textiles. Watching a weaver at work gives visitors a deeper appreciation of songket than browsing finished fabrics alone.',
+                    'For those interested in art, design, or craftsmanship, a weaving-house visit can be a rewarding addition to a journey towards Bukittinggi. Demonstrations and group visits should be arranged in advance.',
+                ],
+                'facts' => [
+                    'Location' => 'Nagari Pandai Sikek, X Koto District, Tanah Datar Regency, in the area between Padang Panjang and Bukittinggi.',
+                    'Things to do' => 'Visit a weaving house, observe the weaving process, learn about decorative motifs, and purchase locally made crafts.',
+                    'Suggested time' => '1–2 hours.',
+                    'Why visit?' => 'An opportunity to meet artisans and learn about skills passed down through generations.',
+                ],
+            ],
+            [
+                'n' => 7,
+                'slug' => 'bukittinggi',
+                'title' => 'Bukittinggi',
+                'subtitle' => 'Jam Gadang and Pasar Ateh',
+                'photo' => ['src' => 'photos/travel/bukittinggi.jpg', 'w' => 968, 'h' => 177],
+                'alt' => 'The Jam Gadang clock tower in central Bukittinggi, with the square and market area around it.',
+                'body' => [
+                    'Bukittinggi combines the atmosphere of a highland town with a recognisable landmark and lively shopping areas. At its centre stands Jam Gadang, the city\'s clock tower, close to Pasar Ateh.',
+                    'The central area is well suited to a relaxed walk, souvenir shopping, and sampling local food. It also combines naturally with a visit to nearby Sianok Canyon.',
+                ],
+                'facts' => [
+                    'Location' => 'The Jam Gadang–Pasar Ateh area in central Bukittinggi.',
+                    'Things to do' => 'Photograph the clock tower, explore the city centre, browse local crafts and food products, and enjoy regional cuisine.',
+                    'Suggested time' => '2–3 hours for the city centre; allow a full-day excursion when combined with Sianok Canyon.',
+                    'Why visit?' => 'A convenient combination of landmarks, shopping, food, and everyday urban life.',
+                ],
+            ],
+            [
+                'n' => 8,
+                'slug' => 'sianok-canyon',
+                'title' => 'Sianok Canyon',
+                'subtitle' => 'Dramatic Scenery Close to the City',
+                'photo' => ['src' => 'photos/travel/sianok-canyon.jpg', 'w' => 966, 'h' => 358],
+                'alt' => 'Sianok Canyon near Bukittinggi, with steep cliffs above a green valley floor.',
+                'body' => [
+                    'Sianok Canyon, locally known as Ngarai Sianok, offers impressive views of steep cliffs and a green valley near Bukittinggi. It provides a striking contrast to the city\'s streets and markets.',
+                    'Visitors can appreciate the scenery from established viewpoints without committing to a demanding walk. Longer walks can be considered separately, depending on access, weather, and individual preferences.',
+                ],
+                'facts' => [
+                    'Location' => 'Along the boundary between Bukittinggi and Agam Regency. Taman Panorama on Jalan Panorama, Bukittinggi, is one established viewing location.',
+                    'Things to do' => 'Enjoy the canyon from designated viewpoints, take landscape photographs, and join guided walks on routes confirmed as open.',
+                    'Suggested time' => '1–2 hours for a viewpoint visit; longer for walking excursions.',
+                    'Why visit?' => 'Remarkable scenery that can be incorporated into a visit to Bukittinggi.',
+                ],
+            ],
+            [
+                'n' => 9,
+                'slug' => 'harau-valley',
+                'title' => 'Harau Valley',
+                'subtitle' => 'Rice Fields, Cliffs, and Waterfalls',
+                'photo' => ['src' => 'photos/travel/harau-valley.jpg', 'w' => 968, 'h' => 481],
+                'alt' => 'Harau Valley, with rice fields on the valley floor below towering rock faces and a waterfall.',
+                'body' => [
+                    'Harau Valley brings together some of West Sumatra\'s most photogenic scenery: rice fields on the valley floor, towering rock faces, and waterfalls descending from the cliffs.',
+                    'A visit can be as simple as a gentle walk and a few scenic stops, or it can become a longer stay in a valley guesthouse. For seminar participants travelling with partners or family members, Harau offers an appealing opportunity to spend time outdoors.',
+                ],
+                'facts' => [
+                    'Location' => 'Harau District, Lima Puluh Kota Regency, near Payakumbuh. Visitor areas include Tarantang, Aka Barayun, and Sarasah Bunta.',
+                    'Things to do' => 'Walk through visitor areas, photograph the cliffs and rice fields, visit waterfalls that are open to the public, and stay overnight in local accommodation.',
+                    'Suggested time' => 'A full-day excursion; one overnight stay allows a more relaxed visit.',
+                    'Why visit?' => 'A memorable natural setting for landscape photography and a change of pace after the seminar.',
+                ],
+            ],
+            [
+                'n' => 10,
+                'slug' => 'lake-maninjau',
+                'title' => 'Lake Maninjau',
+                'subtitle' => 'Views Across a Volcanic Caldera',
+                'photo' => ['src' => 'photos/travel/lake-maninjau.jpg', 'w' => 968, 'h' => 512],
+                'alt' => 'Lake Maninjau seen from high ground, enclosed by the slopes of its volcanic caldera.',
+                'body' => [
+                    'Lake Maninjau offers a different lakeside experience, with a broad expanse of water enclosed by the slopes of a volcanic caldera. Views from higher ground reveal the scale of the landscape, while the lakeshore encourages a slower pace.',
+                    'This destination is particularly suitable for visitors who can extend their stay and prefer an unhurried journey through the highlands.',
+                ],
+                'facts' => [
+                    'Location' => 'Tanjung Raya District, Agam Regency. Elevated viewpoints can be considered around the Embun Pagi–Kelok 44 approach.',
+                    'Things to do' => 'Enjoy panoramic views, take photographs, relax by the lake, and explore nearby communities respectfully.',
+                    'Suggested time' => 'A day trip from a base in Bukittinggi, or an additional overnight stay.',
+                    'Why visit?' => 'Expansive lake views and a scenic journey through the surrounding hills.',
+                ],
+            ],
+            [
+                'n' => 11,
+                'slug' => 'sawahlunto',
+                'title' => 'Sawahlunto',
+                'subtitle' => 'Industrial Heritage with a Human Story',
+                'photo' => ['src' => 'photos/travel/sawahlunto.jpg', 'w' => 964, 'h' => 420],
+                'alt' => 'Historic buildings and mining infrastructure in the town centre of Sawahlunto.',
+                'body' => [
+                    'For participants interested in science, engineering, and the history of technology, Sawahlunto offers a particularly relevant excursion. Its buildings and industrial remains tell the story of an interconnected system of mining, transport, and trade.',
+                    'The Ombilin Coal Mining Heritage of Sawahlunto was inscribed on the UNESCO World Heritage List in 2019. The property includes mining facilities, the mining town, railway infrastructure, and coastal facilities. Its significance also encompasses the lives of workers, including those subjected to forced labour.',
+                ],
+                'facts' => [
+                    'Location' => 'Sawahlunto\'s historic town centre, particularly the Lembah Segar area. The full UNESCO property extends across a much wider region.',
+                    'Things to do' => 'Take a guided heritage walk, explore historic buildings, and visit operating museums. Potential stops include Museum Goedang Ransoem and the Railway Museum, subject to confirmed opening arrangements.',
+                    'Suggested time' => 'A full-day excursion.',
+                    'Why visit?' => 'A compelling connection between engineering, industrial development, and social history.',
+                ],
+            ],
+            [
+                'n' => 12,
+                'slug' => 'alahan-panjang',
+                'title' => 'Alahan Panjang and the Twin Lakes',
+                'subtitle' => 'A Highland Retreat',
+                'photo' => ['src' => 'photos/travel/alahan-panjang.jpg', 'w' => 968, 'h' => 295],
+                'alt' => 'Highland farmland and lake views in the Alahan Panjang and Danau Kembar area of Solok Regency.',
+                'body' => [
+                    'The Alahan Panjang area introduces visitors to another side of West Sumatra: highland settlements, agricultural landscapes, and scenic lakes.',
+                    'Lake Diatas and Lake Dibawah are commonly known as the Twin Lakes, or Danau Kembar. They are separate lakes, so an itinerary should identify the intended viewpoints and stops rather than treating them as a single destination.',
+                ],
+                'facts' => [
+                    'Location' => 'The Alahan Panjang area in Lembah Gumanti District and the Danau Kembar area, Solok Regency.',
+                    'Things to do' => 'Enjoy lake views, photograph agricultural landscapes, visit local businesses, and relax in highland accommodation.',
+                    'Suggested time' => 'An additional 1–2 days.',
+                    'Why visit?' => 'A quieter highland experience that complements visits to the region\'s towns, palaces, and coast.',
+                ],
+            ],
+            [
+                'n' => 13,
+                'slug' => 'padang',
+                'title' => 'Padang',
+                'subtitle' => 'Heritage, Food, and the Indian Ocean',
+                'photo' => ['src' => 'photos/travel/padang.jpg', 'w' => 968, 'h' => 362],
+                'alt' => 'The old-town waterfront of Padang along Batang Arau, with the coast and the Indian Ocean beyond.',
+                'body' => [
+                    'Padang is a useful place to begin or conclude a visit to West Sumatra. Its museums, historic waterfront areas, coastal scenery, and food offer several ways to enjoy time before or after travelling to Batusangkar.',
+                    'Minangkabau International Airport, identified by the airport code PDG, is the main air gateway to the region. A stay in Padang can provide time for sightseeing alongside arrival or departure arrangements.',
+                ],
+                'facts' => [
+                    'Location' => 'Suggested stops include Museum Adityawarman on Jalan Diponegoro, the old-town area around Batang Arau and Pondok, and Padang Beach.',
+                    'Things to do' => 'Visit the museum, walk through the historic district, enjoy the beach towards sunset, and discover Minangkabau cuisine.',
+                    'Suggested time' => 'Half a day to a full day, in addition to the journey to or from Batusangkar.',
+                    'Why visit?' => 'An introduction to regional culture through food, architecture, and coastal city life.',
+                ],
+            ],
+            [
+                'n' => 14,
+                'slug' => 'mandeh',
+                'title' => 'Mandeh',
+                'subtitle' => 'A Coastal Extension to Your Visit',
+                'photo' => ['src' => 'photos/travel/mandeh.jpg', 'w' => 968, 'h' => 481],
+                'alt' => 'The bays and small islands of the Mandeh area, seen from a coastal viewpoint in Pesisir Selatan.',
+                'body' => [
+                    'The Mandeh area offers a change of scenery after time in the highlands. Bays, small islands, and coastal viewpoints create opportunities for a relaxed excursion by land and boat.',
+                    'Local providers offer island visits and activities such as snorkelling. The exact route and available activities depend on the operator, sea conditions, and weather.',
+                ],
+                'facts' => [
+                    'Location' => 'The Mandeh area, Koto XI Tarusan District, Pesisir Selatan Regency. Boat departure points should be agreed with the selected operator.',
+                    'Things to do' => 'Enjoy coastal viewpoints, take a boat excursion, visit islands, and snorkel where conditions and services permit.',
+                    'Suggested time' => 'A full day from a base in Padang. Visitors starting in Batusangkar should consider an overnight stay in Padang as part of the extension.',
+                    'Why visit?' => 'A tropical coastal experience that complements West Sumatra\'s cultural and highland attractions.',
+                ],
+            ],
+        ],
     ],
 ];

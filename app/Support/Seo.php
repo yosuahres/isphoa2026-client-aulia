@@ -102,6 +102,7 @@ class Seo
             ['route' => 'site.committee', 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['route' => 'site.registration', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['route' => 'site.venue', 'changefreq' => 'monthly', 'priority' => '0.6'],
+            ['route' => 'site.travel-information', 'changefreq' => 'monthly', 'priority' => '0.5'],
             ['route' => 'site.contact', 'changefreq' => 'yearly', 'priority' => '0.5'],
         ];
     }

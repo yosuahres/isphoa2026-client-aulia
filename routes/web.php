@@ -22,6 +22,7 @@ Route::name('site.')->group(function () {
         Route::redirect("/committee/{$body}", "/committee#{$body}", 301);
     }
     Route::view('/venue', 'site.venue')->name('venue');
+    Route::view('/travel-information', 'site.travel-information')->name('travel-information');
     Route::view('/important-dates', 'site.important-dates')->name('important-dates');
     Route::view('/speakers', 'site.speakers')->name('speakers');
     Route::view('/call-for-papers', 'site.call-for-papers')->name('call-for-papers');
