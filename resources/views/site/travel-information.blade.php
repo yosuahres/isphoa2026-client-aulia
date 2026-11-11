@@ -3,7 +3,7 @@
     $travel = config('isphoa.travel');
 @endphp
 
-@section('title', 'Travel Information')
+@section('title', 'Tourism Destination')
 @section('description', "Things to see around {$event['city']} and across {$event['region']} during {$event['shortName']} {$event['edition']}: Istano Basa Pagaruyung, Nagari Tuo Pariangan, Bukittinggi, Harau Valley, Sawahlunto, Padang, and more.")
 
 <x-layouts.site :scroll-to-hash="true">
@@ -15,9 +15,9 @@
         <x-site.dot-field plate="caustic" :soft="true" :repeat="3" />
 
         <x-site.container wide class="relative z-10 pb-16 pt-12 md:pb-24 md:pt-16">
-            {{-- The tab is called Travel Information; the h1 is the invitation
+            {{-- The tab is called Tourism Destination; the h1 is the invitation
                  the guide opens with, so the label rides above it. --}}
-            <x-site.reveal as="p" class="eyebrow">Travel Information</x-site.reveal>
+            <x-site.reveal as="p" class="eyebrow">Tourism Destination</x-site.reveal>
 
             <x-site.page-header class="mt-4 max-w-none">{{ $travel['heading'] }}</x-site.page-header>
 

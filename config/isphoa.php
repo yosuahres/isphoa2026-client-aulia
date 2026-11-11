@@ -633,7 +633,7 @@ return [
                     'href' => '/venue',
                 ],
                 [
-                    'label' => 'Travel Information',
+                    'label' => 'Tourism Destination',
                     'href' => '/travel-information',
                 ],
             ],
@@ -1251,7 +1251,7 @@ return [
     ],
     /*
     |--------------------------------------------------------------------------
-    | Travel Information
+    | Tourism Destination
     |--------------------------------------------------------------------------
     |
     | The second Venue tab: what there is to see around Batusangkar and across
