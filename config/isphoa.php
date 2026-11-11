@@ -758,7 +758,7 @@ return [
     // The form the registration procedure sends people to. The steps
     // themselves are written out in the view, since one of them wraps a link.
     'registrationProcedure' => [
-        'formUrl' => 'https://docs.google.com/forms/d/e/1FAIpQLSe7Dx261BSufBunHtU63OPAF4_Y5ONujpcVbCf1O4ZlW37iwQ/viewform',
+        'formUrl' => 'https://intip.in/ISPHOA2026Registration',
     ],
     // Terms shown under the payment details on the registration page.
     'registrationTerms' => [

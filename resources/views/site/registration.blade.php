@@ -7,6 +7,10 @@
 
     $linkClass = 'font-medium text-beam underline decoration-beam/30 underline-offset-4 transition-colors hover:decoration-beam';
 
+    // The link is written out in full on the page, so the scheme is dropped
+    // from the label: the href still carries it.
+    $formLabel = preg_replace('#^https?://#', '', $procedure['formUrl']);
+
     // The early-bird window, from the Registration group on the dates page.
     $earlyBird = collect(config('isphoa.keyDateGroups'))
         ->flatMap(fn ($group) => $group['dates'])
@@ -30,7 +34,7 @@
                     <li class="pl-1">Please complete the payment fee according to the method you choose.</li>
                     <li class="pl-1">
                         Please complete the conference registration using the following link:
-                        <a href="{{ $procedure['formUrl'] }}" target="_blank" rel="noopener noreferrer" class="{{ $linkClass }} break-all">{{ $procedure['formUrl'] }}<span class="sr-only"> (opens in a new tab)</span></a>
+                        <a href="{{ $procedure['formUrl'] }}" target="_blank" rel="noopener noreferrer" class="{{ $linkClass }} break-all">{{ $formLabel }}<span class="sr-only"> (opens in a new tab)</span></a>
                     </li>
                     <li class="pl-1">Before submitting the form, please ensure that all required information is included and all supporting documents (payment proof/slip) are attached. This will enable us to process your registration promptly and ensure a smooth conference experience for you.</li>
                 </ol>
