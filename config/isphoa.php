@@ -107,10 +107,10 @@ return [
      | overlay reserves the right box before it loads.
      */
     'announcement' => [
-        'text' => 'Paper Submission Deadline Extended — October 15th, 2026',
-        'href' => '/photos/submission-deadline-extended.jpg',
-        'imageWidth' => 1024,
-        'imageHeight' => 1536,
+        'text' => 'Final Call for Papers | Full Paper Submission by October 31st, 2026',
+        'href' => '/photos/call-for-papers-poster.jpg',
+        'imageWidth' => 1365,
+        'imageHeight' => 2048,
     ],
     'authorDocuments' => [
         'guidelines' => '/documents/ISPhOA-2026-Paper-Submission-Guidelines.docx',
@@ -525,21 +525,19 @@ return [
         [
             'heading' => 'Submission',
             'dates' => [
-                // Both extended per the "Paper Submission Deadline Extended"
-                // announcement; 'extended' marks them as such in the table.
+                // Per the Final Call for Papers poster. Setting 'extended' => true
+                // on an entry marks it as such in the table.
                 [
                     'n' => '01',
-                    'label' => 'Full-paper Submission (max 6 pages) for Review',
-                    'iso' => '2026-10-15T23:59:59+07:00',
-                    'display' => '15 Oct 2026',
-                    'extended' => true,
+                    'label' => 'Full-paper Submission for Review',
+                    'iso' => '2026-10-31T23:59:59+07:00',
+                    'display' => '31 Oct 2026',
                 ],
                 [
                     'n' => '02',
                     'label' => 'Notification of Acceptance',
-                    'iso' => '2026-11-10T00:00:00+07:00',
-                    'display' => '10 Nov 2026',
-                    'extended' => true,
+                    'iso' => '2026-11-15T00:00:00+07:00',
+                    'display' => '15 Nov 2026',
                 ],
                 [
                     'n' => '04',
@@ -576,7 +574,7 @@ return [
     'keyDates' => [
         [
             'n' => '01',
-            'label' => 'Full-paper Submission (max 6 pages) for Review',
+            'label' => 'Full-paper Submission for Review',
             'iso' => '2026-09-15T23:59:59+07:00',
             'display' => '15 Sep 2026',
         ],
