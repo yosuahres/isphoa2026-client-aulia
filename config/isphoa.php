@@ -854,7 +854,7 @@ return [
                     'slug' => 'chaompluk',
                     'name' => 'Assoc. Prof. Dr. Piyasak Chaumpluk',
                     'role' => 'Keynote',
-                    'institution' => 'UniversityChulalongkorn, Thailand',
+                    'institution' => 'Chulalongkorn University, Thailand',
                     'topic' => null,
                     'photo' => '/photos/speakers/keynotes/Picture6.jpg',
                     'bio' => [
@@ -1015,7 +1015,7 @@ return [
             'slug' => 'chaompluk',
             'name' => 'Assoc. Prof. Dr. Piyasak Chaumpluk',
             'role' => 'Keynote',
-            'institution' => 'UniversityChulalongkorn, Thailand',
+            'institution' => 'Chulalongkorn University, Thailand',
             'topic' => null,
             'photo' => '/photos/speakers/keynotes/Picture6.jpg',
             'bio' => [
