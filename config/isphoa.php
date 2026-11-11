@@ -206,7 +206,7 @@ return [
                 ],
                 [
                     'role' => 'Co-Chair',
-                    'name' => 'Dr.rer.nat. Muldalisnur',
+                    'name' => 'Dr.rer.nat. Muldarisnur',
                 ],
                 [
                     'role' => 'Secretary',
